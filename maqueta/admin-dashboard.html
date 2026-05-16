@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - ToolShare Córdoba</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">ToolShare CBA - Admin</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="admin-dashboard.html">Inicio Admin</a></li>
+                    <li><a href="admin-solicitudes.html">Gestionar Préstamos</a></li>
+                    <li><a href="admin-inventario.html">Inventario</a></li>
+                </ul>
+            </nav>
+            <a href="index.html">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section-light">
+            <h1 class="section-title">Panel de Control General</h1>
+            <p class="section-description">Monitoreo de alertas del sistema y trazabilidad comunitaria.</p>
+
+            <div class="grid-3">
+                <article class="card">
+                    <h3>Alertas de Vencimiento</h3>
+                    <p>Hay 3 herramientas que superaron el plazo de devolución establecido.</p>
+                    <a href="admin-solicitudes.html" class="btn btn-secondary">Ver Detalle</a>
+                </article>
+
+                <article class="card">
+                    <h3>Stock Crítico</h3>
+                    <p>La categoría "Albañilería" cuenta con baja disponibilidad de stock.</p>
+                    <a href="admin-inventario.html" class="btn btn-secondary">Revisar Inventario</a>
+                </article>
+
+                <article class="card">
+                    <h3>Impacto Comunitario</h3>
+                    <p>Total de préstamos activos esta semana: 24 solicitudes aprobadas.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
+            <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
+        </div>
+    </footer>
+
+</body>
+</html>
