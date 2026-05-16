@@ -305,3 +305,24 @@ section {
     opacity: 0.8;
     margin-bottom: 10px;
 }
+
+/* Estilos para el Panel de Facundo */
+.caja-alerta {
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #000;
+}
+
+#alerta-naranja {
+    background-color: orange;
+}
+
+#alerta-roja {
+    background-color: red;
+    color: white;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
