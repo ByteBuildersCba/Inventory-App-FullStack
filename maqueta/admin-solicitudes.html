@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Gestión de Solicitudes | ToolShare CBA</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">ToolShare CBA - Admin</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="admin-dashboard.html">Inicio Admin</a></li>
+                    <li><a href="admin-solicitudes.html">Gestionar Préstamos</a></li>
+                    <li><a href="admin-inventario.html">Inventario</a></li>
+                </ul>
+            </nav>
+            <a href="index.html">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="section-light">
+            <h1 class="section-title">Panel de Control de Solicitudes</h1>
+            <p class="section-description">Monitoreo de alertas del sistema y trazabilidad comunitaria.</p>
+
+            <div class="grid-3">
+                
+                <article class="caja-alerta" id="alerta-naranja">
+                    <h3>Alertas de Vencimiento Próximo</h3>
+                    <p>Hay 3 herramientas que están por superar el plazo de devolución establecido esta semana.</p>
+                </article>
+
+                <article class="caja-alerta" id="alerta-roja">
+                    <h3>Stock Crítico por Demora</h3>
+                    <p>La categoría "Albañilería" cuenta con baja disponibilidad debido a retrasos en las devoluciones.</p>
+                </article>
+
+                <article class="card">
+                    <h3>Impacto Comunitario</h3>
+                    <p>Total de préstamos activos esta semana: 24 solicitudes aprobadas con éxito.</p>
+                </article>
+                
+            </div>
+        </section>
+
+        <section class="section-white">
+            <h2 class="section-title">Solicitudes de Préstamo Pendientes</h2>
+            <p class="section-description">Evalúe los datos del vecino solicitante y determine la aprobación o rechazo del préstamo.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Solicitud</th>
+                        <th>Vecino / Emprendedor</th>
+                        <th>Herramienta Requerida</th>
+                        <th>Fecha de Retiro</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Estado</th>
+                        <th>Acción Requerida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#2041</td>
+                        <td>Carlos Gómez</td>
+                        <td>Taladro Percutor Bosch</td>
+                        <td>18/05/2026</td>
+                        <td>22/05/2026</td>
+                        <td>Pendiente</td>
+                        <td>
+                            <button class="btn btn-primary">Aprobar</button>
+                            <button class="btn btn-secondary">Rechazar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2042</td>
+                        <td>Ana Martínez</td>
+                        <td>Pinza pelacable transversal</td>
+                        <td>19/05/2026</td>
+                        <td>20/05/2026</td>
+                        <td>Pendiente</td>
+                        <td>
+                            <button class="btn btn-primary">Aprobar</button>
+                            <button class="btn btn-secondary">Rechazar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
+            <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
+        </div>
+    </footer>
+
+</body>
+</html>
