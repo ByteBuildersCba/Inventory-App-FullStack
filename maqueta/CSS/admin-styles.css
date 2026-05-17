@@ -1,0 +1,38 @@
+* Estilos para el Panel de FACUNDO */
+/* --- ESTILOS PARA EL PANEL DE CONTROL (TABLAS Y ALERTAS) --- */
+.caja-alerta {
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid var(--dark);
+    border-radius: 6px;
+}
+
+#alerta-naranja {
+    background-color: #ff9800;
+    color: var(--dark);
+}
+
+#alerta-roja {
+    background-color: #d32f2f;
+    color: var(--white);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+table th {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eaeaea;
+}

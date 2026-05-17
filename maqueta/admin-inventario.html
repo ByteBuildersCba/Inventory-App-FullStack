@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Inventario | ToolShare CBA</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">ToolShare CBA - Admin</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="admin-dashboard.html">Inicio Admin</a></li>
+                    <li><a href="admin-solicitudes.html">Gestionar Préstamos</a></li>
+                    <li><a href="admin-inventario.html">Inventario</a></li>
+                </ul>
+            </nav>
+            <a href="index.html">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="mt-2">
+            <h1>Inventario del Taller Comunitario</h1>
+            <p>Panel de carga y control de stock para el Administrador.</p>
+
+            <div class="grid-3">
+                <article class="card">
+                    <h3>Registrar Nueva Herramienta</h3>
+                    <form action="#" method="POST">
+                        <div>
+                            <label>Nombre:</label>
+                            <input type="text" placeholder="Ej: Cuchara albañil" required>
+                        </div>
+                        <div>
+                            <label>Categoría:</label>
+                            <select required>
+                                <option value="" disabled selected>Seleccione una categoría...</option>
+                                <option value="albañileria">Albañilería</option>
+                                <option value="electricidad">Electricidad</option>
+                                <option value="carpinteria">Carpintería</option>
+                                <option value="jardineria">Jardinería</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Código de Herramienta:</label>
+                            <input type="text" placeholder="Ej: ALB-004" required>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Ingresar Stock</button>
+                    </form>
+                </article>
+
+                <article class="card">
+                    <h3>Resumen de Estado</h3>
+                    <p>Total herramientas registradas: <strong>4 unidades</strong>.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="mt-2">
+            <h2>Catálogo de Herramientas Existentes</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Herramienta</th>
+                        <th>Categoría</th>
+                        <th>Estado Físico</th>
+                        <th>Disponibilidad</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ALB-001</td>
+                        <td>Nivel de mano</td>
+                        <td>Albañilería</td>
+                        <td>Excelente</td>
+                        <td>Disponible</td>
+                        <td><button class="btn btn-secondary">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ALB-002</td>
+                        <td>Taladro Percutor Bosch</td>
+                        <td>Albañilería</td>
+                        <td>Bueno</td>
+                        <td>En Préstamo</td> 
+                        <td><button class="btn btn-secondary">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ALB-003</td>
+                        <td>Cuchara de Albañil</td>
+                        <td>Albañilería</td>
+                        <td>Bueno</td>
+                        <td>En Demora</td>
+                        <td><button class="btn btn-secondary">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ELE-001</td>
+                        <td>Pinza pelacable transversal</td>
+                        <td>Electricidad</td>
+                        <td>Excelente</td>
+                        <td>En Préstamo</td>
+                        <td><button class="btn btn-secondary">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
+            <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
+        </div>
+    </footer>
+
+</body>
+</html>
