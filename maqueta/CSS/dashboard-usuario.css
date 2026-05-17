@@ -1,6 +1,13 @@
 
 /* Panel de Usuario */
-
+main { 
+    /* Nota: Usá la clase o etiqueta exacta que envuelva a tu contenido derecho */
+    display: flex;
+    flex-direction: column;
+    min-height: calc(90vh - 100px); /* Ajustamos 90vh según el alto real de tu Header */
+    justify-content: space-between;
+    box-sizing: border-box;
+}
 
 /* Forzamos a que el enlace ocupe todo el espacio de la card */
 .card .card-usuario {
@@ -46,6 +53,8 @@
     border-radius: 10px;
     box-shadow: var(--shadow);
     border: 1px solid #eaeaea;
+    position: sticky;     /* 👈 Hace que se quede fijo al bajar */
+    top: 100px;           /* 👈 Deja espacio para que no lo tape el header */
 }
 
 .sidebar-categorias h3 {
@@ -86,4 +95,18 @@
     max-height: 120px;  /* Le pone un tope de altura para que todas las cards midan lo mismo */
     object-fit: contain;/* Si la imagen es muy larga, la escala para que entre entera sin recortarse */
     margin: 15px auto;  /* Le da aire arriba/abajo y la centra horizontalmente */
+}
+/* Separa los bloques de categorías dentro del catálogo */
+.contenido-herramientas > div {
+    margin-bottom: 50px; /* Le da 50px de espacio libre abajo a cada categoría */
+}
+
+/* Evita que la última categoría tenga espacio de más al fondo */
+.contenido-herramientas > div:last-child {
+    margin-bottom: 0;
+}
+/* Le da un margen de respeto superior a cualquier ID al que se salte con un enlace */
+html {
+    scroll-behavior: smooth; /* Hace que el movimiento sea suave y lindo */
+    scroll-padding-top: 100px; /* 👈 Ajustá este número según la altura de tu Header */
 }

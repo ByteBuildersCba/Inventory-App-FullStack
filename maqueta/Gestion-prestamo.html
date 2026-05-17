@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolShare CBA</title>
+    <link rel="stylesheet" href="/maqueta/CSS/styles.css">
+    <link rel="stylesheet" href="/maqueta/CSS/dashboard-usuario.css">
+    <link rel="stylesheet" href="/maqueta/CSS/gestion-prestamo.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo"> ToolShare CBA</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/maqueta/index.html">Home</a></li>
+                    <li><a href="#about">Quíenes Somos</a></li>
+                    <li><a href="#herramientas">Herramientas</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="/maqueta/index.html">Cerrar Sesión</a>
+        </div>
+    </header>
+
+
+    <main class="panel-layout container">
+        <aside class="sidebar-categorias">
+            <h3>Mi Cuenta</h3>
+            <nav class="nav-categorias">
+                <ul>
+                    <li><a href="/maqueta/dashboard-usuario.html">Panel de Usuario</a></li>
+                    <li><a href="/maqueta/herramientas.html">Herramientas</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="contenido-prestamos">
+            <h1 class="section-title">Gestión de Préstamos</h1>
+
+            <h2 class="sub-title">Mis Préstamos Activos</h2>
+            <div class="prestamos-lista">
+            
+                <div class="card-prestamo">
+                    <div class="prestamo-info">
+                        <h3>Amoladora</h3>
+                        <p class="fecha">&#128198; Devolución: 22 de Junio, 2026</p>
+                    </div>
+                    <span class="status en-curso">En Curso</span>
+                </div>
+
+                <div class="card-prestamo">
+                    <div class="prestamo-info">
+                        <h3>Kit Taladro inalambrico</h3>
+                        <p class="fecha">&#128680; Debió devolverse el: 10 de Mayo, 2026</p>
+                    </div>
+                    <span class="status atrasado">Atrasado</span>
+                </div>
+
+                <div class="card-prestamo">
+                    <div class="prestamo-info">
+                        <h3>Pinza ampirometrica</h3>
+                        <p class="fecha">&#9989; Devuelto el: 05 de Mayo, 2026</p>
+                    </div>
+                    <span class="status devuelto">Devuelto</span>
+                </div>
+
+            </div>
+
+            <h2 class="sub-title mt-2">Solicitar un Nuevo Préstamo</h2>
+            <div class="card form-card">
+                <form class="prestamo-form">
+                    <!-- Seleccion de categoria -->
+                    <div class="form-group">
+                        <select name="herramienta" id="herramienta">
+                            <label for="herramienta">Seleccionar Herramienta Disponible </label>
+                            <optgroup label="Albañileria">
+                            <option value="herramienta">--Seleccione Herramientas Disponible--</option>
+                            <option value="nivel-mano">Nivel de mano</option>
+                            <option value="amoladora">Amoladora</option>
+                            <option value="carretilla">carretilla</option>
+                            <option value="cuchara">Cuchara Albañil</option>
+                            </optgroup>
+
+                            <optgroup label="Electricidad">
+                                <option value="Multimetro">Multimetro</option>
+                                <option value="Destornillador plano">Destornillador plano</option>
+                                <option value="Pinza-transversal">Pinza-transversal</option>
+                                <option value="Pinza universal">Pinza universal</option>
+                                <option value="Pinza de punta">Pinza de punta</option>
+                                <option value="Alicate">Alicate</option>
+                                <option value="Pinza-ampirometrica">Pinza-ampirometrica</option>
+                            </optgroup>
+
+                            <optgroup label="Plomeria">
+                                <option value="llave-Stilson">Llave Stilson</option>
+                                <option value="tarraja">Tarraja</option>
+                                <option value="pinza-pico-loro">Pinza pico loro</option>
+                                <option value="llave-francesa">Llave Francesa</option>
+                                <option value="corta-tubo">Corta tubo</option>
+                                <option value="pinza-multi-uso">Pinza multi uso</option>
+                            </optgroup>
+                            <optgroup label="Carpinteria">
+                                <option value="Taladro a bateria Kit">Taladro a bateria kit</option>
+                                <option value="kit-mecha-fostner">kit mecha fostner</option>
+                                <option value="Cinta-metrica">Cinta Metrica 5m Stanley</option>
+                                <option value="router">Router</option>
+                                <option value="caladora">Caladora</option>
+                                <option value="Sierra-Circular">Sierra Circular</option>
+                            </optgroup>
+                        </select>
+
+                    
+                    </div>
+                
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fecha-retiro">Fecha de Retiro</label>
+                            <input type="date" id="fecha-retiro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-devolucion">Fecha de Devolución</label>
+                            <input type="date" id="fecha-devolucion" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-solicitar">Confirmar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+        
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
+            <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
+        </div>
+    </footer>
+</body>
+</html>
