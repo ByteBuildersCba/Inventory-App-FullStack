@@ -1,0 +1,29 @@
+/* CONTENEDOR DEL EQUIPO */
+
+.equipo-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* CARD INDIVIDUAL */
+.equipo-miembro{
+    width: 220px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    transition: transform 0.3s;
+}
+
+/* IMAGEN */
+.equipo-miembro img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
