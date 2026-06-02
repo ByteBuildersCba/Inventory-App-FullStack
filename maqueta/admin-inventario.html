@@ -44,11 +44,24 @@
                                 <option value="electricidad">Electricidad</option>
                                 <option value="carpinteria">Carpintería</option>
                                 <option value="jardineria">Jardinería</option>
+                            </select> 
+                        </div>
+                        <div>
+                            <label>Estado fisico inicial:</label>
+                            <select required>
+                                <option value="" disabled selected>Seleccione el estado...</option>
+                                <option value="excelente">Excelente</option>
+                                <option value="bueno">Bueno</option>
+                                <option value="regular">Regular / Requiere Mantenimiento</option>
                             </select>
                         </div>
                         <div>
                             <label>Código de Herramienta:</label>
                             <input type="text" placeholder="Ej: ALB-004" required>
+                        </div>
+                        <div>
+                            <label>Descripcion / Observaciones</label>
+                            <textarea placeholder="Ej: Se ingresa con Estuche plastico sin accesorios adicionales " rows="3"></textarea>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Ingresar Stock</button>
@@ -73,6 +86,7 @@
                         <th>Categoría</th>
                         <th>Estado Físico</th>
                         <th>Disponibilidad</th>
+                        <th>Observaciones</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -83,6 +97,7 @@
                         <td>Albañilería</td>
                         <td>Excelente</td>
                         <td>Disponible</td>
+                        <td>Donado por corralón del Barrio, sin marcas.</td>
                         <td><button class="btn btn-secondary">Editar</button></td>
                     </tr>
                     <tr>
@@ -91,6 +106,8 @@
                         <td>Albañilería</td>
                         <td>Bueno</td>
                         <td>En Préstamo</td> 
+                        <td>Se entrega con maletín plástico rígido.</td>
+                
                         <td><button class="btn btn-secondary">Editar</button></td>
                     </tr>
                     <tr>
@@ -99,6 +116,7 @@
                         <td>Albañilería</td>
                         <td>Bueno</td>
                         <td>En Demora</td>
+                        <td>Mango de madera desgaste de uso.</td>
                         <td><button class="btn btn-secondary">Editar</button></td>
                     </tr>
                     <tr>
@@ -107,6 +125,7 @@
                         <td>Electricidad</td>
                         <td>Excelente</td>
                         <td>En Préstamo</td>
+                        <td>Sin Descripcion</td>
                         <td><button class="btn btn-secondary">Editar</button></td>
                     </tr>
                 </tbody>
