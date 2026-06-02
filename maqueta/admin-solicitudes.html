@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Gestión de Solicitudes | ToolShare CBA</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
 
@@ -61,6 +61,7 @@
                         <th>Fecha de Retiro</th>
                         <th>Fecha de Devolución</th>
                         <th>Estado</th>
+                        <th>Observaciones / Motivos</th>
                         <th>Acción Requerida</th>
                     </tr>
                 </thead>
@@ -69,12 +70,17 @@
                         <td>#2041</td>
                         <td>Carlos Gómez</td>
                         <td>Taladro Percutor Bosch</td>
-                        <td>18/05/2026</td>
-                        <td>22/05/2026</td>
-                        <td>Pendiente</td>
+                        <td>01/06/2026</td>
+                        <td>22/07/2026</td>
+                        <td><samp class="estado-pendiente">Pendiente</samp></td>
                         <td>
-                            <button class="btn btn-primary">Aprobar</button>
-                            <button class="btn btn-secondary">Rechazar</button>
+                            <input type="text" class="input-tabla" placeholder="Ej retira con caja rigida" required>
+                        </td>
+                        <td>
+                            <div class="button">  
+                                <button class="btn btn-primary">Aprobar</button>
+                                <button class="btn btn-secondary">Rechazar</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -83,10 +89,15 @@
                         <td>Pinza pelacable transversal</td>
                         <td>19/05/2026</td>
                         <td>20/05/2026</td>
-                        <td>Pendiente</td>
+                        <td><span class="estado-pendiente">Pendiente</span></td>
                         <td>
-                            <button class="btn btn-primary">Aprobar</button>
-                            <button class="btn btn-secondary">Rechazar</button>
+                            <input type="text" class="input-tabla" placeholder="Ej: Controlar aislación" required>
+                        </td>
+                        <td>
+                            <div class="button">
+                                <button class="btn btn-primary">Aprobar</button>
+                                <button class="btn btn-secondary">Rechazar</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
