@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolShare Córdoba</title>
     <link rel="stylesheet" href="./CSS/styles.css">
     <link rel="stylesheet" href="./CSS/usuario-dashboard.css">
-    
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+
 </head>
+
 <body>
-   <header> 
-        <div class="container nav-container">
-            <div class="logo"> ToolShare CBA</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="QuienesSomos.html">Quíenes Somos</a></li>
-                    <li><a href="Herramientas.html">Herramientas</a></li>
+    <!-- HEADER -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="logo" href="index.html">ToolShare CBA</a>
+            <!--Boton hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Activar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="menuNavegacion">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="QuienesSomos.html">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Herramientas.html">Herramientas</a>
+                    </li>
                 </ul>
-            </nav>
-            <a href="login.html">Iniciar Sesión</a>
+                
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-primary">Iniciar Sesión</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
+</header>
 
     <main>
-       <section id="features" class="section-light">
+        <section id="features" class="section-light">
             <div class="container">
+
                 <h1 class="section-title">Panel de Usuario</h1>
-                <div class="grid-4">
-                    <div class="card feature-card">
-                    
-                        <a class="card-usuario" href="herramientas.html">Herramientas</a>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card feature-card">
+                            <a class="card-usuario" href="herramientas.html">Herramientas</a>
+                        </div>
 
                     </div>
-                    <div class="card feature-card">
-                        <a class="card-usuario" href="usuario-gestion-prestamo.html">Gestion de Prestamo</a>
-                        
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card feature-card">
+                            <a class="card-usuario" href="usuario-gestion-prestamo.html">Gestion de Prestamo</a>
+
+                        </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         </section>
 
     </main>
-   <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
             <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
         </div>
     </footer>
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
+
 </html>
