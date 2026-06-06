@@ -1,171 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <title>ToolShare Córdoba | Préstamo de Herramientas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
+    <!-- HEADER -->
     <header>
-        <div class="container nav-container">
-            <div class="logo"> ToolShare CBA</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">Quíenes Somos</a></li>
-                    <li><a href="#features">Herramientas</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#login">Iniciar Sesión</a>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a class="logo" href="index.html">ToolShare CBA</a>
+                <!--Boton hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion"
+                    aria-controls="menuNavegacion" aria-expanded="false" aria-label="Activar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuNavegacion">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="QuienesSomos.html">Quiénes Somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Herramientas.html">Herramientas</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex">
+                        <a href="login.html" class="btn btn-primary">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
         <!-- HERO -->
-        <section id="hero" class="hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>Accedé a herramientas sin necesidad de comprarlas</h1>
-                    <p>Conectamos personas, emprendedores y trabajadores con herramientas comunitarias disponibles para
-                        préstamo.</p>
-                    <div class="buttons">
-                        <a href="#herramientas" class="btn btn-primary">Ver herramientas</a>
-                        <a href="#registro" class="btn btn-secondary">Registrarse</a>
+        <section id="hero" class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+                        <h1 class="display-5 fw-bold lh-1 mb-3">Accedé a herramientas sin necesidad de comprarlas</h1>
+                        <p class="lead">Conectamos personas, emprendedores y trabajadores con herramientas comunitarias
+                            disponibles para préstamo.</p>
+                        <div class="d-grid gap-2 d-inline-flex mt-2">
+                            <a href="herramientas.html" class="btn btn-success btn-lg px-4 me-md-2">Ver herramientas</a>
+                            <a href="registro.html" class="btn btn-outline-dark btn-lg px-4">Registrarse</a>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-img">
-                    <div class="img-placeholder">
-                        <!-- Aquí puedes colocar una imagen relacionada con herramientas o comunidad -->
-                         <img src="./assets/toolshare.png" alt="herramientas">
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <img src="./assets/toolshare.png" class="img-fluid rounded shadow"
+                                alt="Ilustración de herramientas comunitarias">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SOBRE NOSOTROS -->
-        <section id="about" class="section-light">
+        <section id="about" class="py-5">
             <div class="container">
-                <h2>¿Porque nace ToolShare CBA?</h2>
-                <div class="grid-3">
-                    <div class="card">
-                        <h3>Costo Alto</h3>
-                        <p>El costo de comprar herramientas que solo se necesitan ocasionalmente puede ser elevado,
-                            especialmente para personas con presupuestos limitados.</p>
+                <h2 class="text-center mb-5 fw-bold">¿Por qué nace ToolShare CBA?</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h3 class="card-title h5 text-success">Costo Alto</h3>
+                                <p class="card-text">El costo de comprar herramientas que solo se necesitan
+                                    ocasionalmente puede ser elevado, especialmente para personas con presupuestos
+                                    limitados.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Falta de Acceso</h3>
-                        <p>En algunas áreas, el acceso a herramientas especializadas puede ser limitado, lo que
-                            dificulta la realización de proyectos que requieren su uso.</p>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h3 class="card-title h5 text-success">Falta de Acceso</h3>
+                                <p class="card-text">En algunas áreas, el acceso a herramientas especializadas puede ser
+                                    limitado, lo que dificulta la realización de proyectos que requieren su uso.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Desorganización</h3>
-                        <p>La falta de un sistema eficiente para gestionar y compartir herramientas puede llevar a la
-                            pérdida de recursos y a la ineficiencia en el uso de los mismos.</p>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h3 class="card-title h5 text-success">Desorganización</h3>
+                                <p class="card-text">La falta de un sistema eficiente para gestionar y compartir
+                                    herramientas puede llevar a la pérdida de recursos y a la ineficiencia en el uso de
+                                    los mismos.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SOLUCIÓN -->
-        <section class="section-white">
-            <div class="container text-center">
-                <h2 class="section-title">La Solución</h2>
-                <p class="section-description">Nuestra plataforma organiza préstamos comunitarios de manera simple,
-                    transparente y accesible.</p>
-                <div class="grid-3">
-                    <div class="card card-hover">
-                        <h3> Préstamo Rápido</h3>
-                        <p>Permite a los usuarios obtener herramientas en poco tiempo, facilitando el acceso a recursos
-                            necesarios para sus proyectos.</p>
+        <section class="py-5 bg-success text-white">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">La Solución</h2>
+                    <p class="lead">Nuestra plataforma organiza préstamos comunitarios de manera simple, transparente y
+                        accesible.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow text-dark">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Préstamo Rápido</h3>
+                                <p class="card-text">Permite a los usuarios obtener herramientas en poco tiempo,
+                                    facilitando el acceso a recursos necesarios para sus proyectos.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-hover">
-                        <h3>Control de Vencimientos</h3>
-                        <p>Implementamos un sistema de seguimiento de vencimientos que asegura que las herramientas sean
-                            devueltas a tiempo, manteniendo la disponibilidad para otros usuarios.</p>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow text-dark">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Control de Vencimientos</h3>
+                                <p class="card-text">Implementamos un sistema de seguimiento de vencimientos que asegura
+                                    que las herramientas sean devueltas a tiempo, manteniendo la disponibilidad.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-hover">
-                        <h3>Historial</h3>
-                        <p> Mantenemos un registro detallado de todas las actividades de préstamo, lo que permite a los
-                            usuarios rastrear su historial y mejorar su experiencia en la plataforma.</p>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow text-dark">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Historial</h3>
+                                <p class="card-text">Mantenemos un registro detallado de todas las actividades de
+                                    préstamo, permitiendo rastrear el historial y mejorar la experiencia.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- FUNCIONALIDADES -->
-        <section id="features" class="section-light">
+        <section id="features" class="py-5">
             <div class="container">
-                <h2 class="section-title">Funcionalidades del Sistema</h2>
-                <div class="grid-4">
-                    <div class="card feature-card">
-                        <span class="badge">Nuevo</span>
-                        <h3>Ver herramientas</h3>
-                        <p>Catálogo completo con filtros.</p>
+                <h2 class="text-center mb-5 fw-bold">Funcionalidades del Sistema</h2>
+                <div class="row g-4 text-center">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <span class="badge bg-warning ">Nuevo</span>
+                                <h3 class="card-title h5">Ver herramientas</h3>
+                                <p class="card-text">Catálogo completo con filtros.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card feature-card">
-                        <h3>Gestionar préstamos</h3>
-                        <p>Aprobá o rechazá solicitudes.</p>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Gestionar préstamos</h3>
+                                <p class="card-text">Aprobá o rechazá solicitudes.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card feature-card">
-                        <h3>Alertas</h3>
-                        <p>Notificaciones de tus movimientos.</p>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Alertas</h3>
+                                <p class="card-text">Notificaciones de tus movimientos.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card feature-card">
-                        <h3>Historial</h3>
-                        <p>Métricas de uso de la comunidad.</p>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Historial</h3>
+                                <p class="card-text">Métricas de uso de la comunidad.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CÓMO FUNCIONA -->
-        <section class="section-light">
-            <div class="container">
-                <h2 class="section-title">¿Cómo Funciona?</h2>
-                <div class="paso-container">
-                    <div class="paso">
-                        <div class="paso-numero">1</div>
-                        <h3>Registrate</h3>
+        <section class="py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="mb-5 fw-bold">¿Cómo Funciona?</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4">
+                    <div class="p-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">1</div>
+                        <h3 class="h5">Registrate</h3>
                     </div>
                     <div class="paso-line"></div>
-                    <div class="paso">
-                        <div class="paso-numero">2</div>
-                        <h3>Explora</h3>
+                    <div class="p-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">2</div>
+                        <h3 class="h5">Explorá</h3>
                     </div>
                     <div class="paso-line"></div>
-                    <div class="paso">
-                        <div class="paso-numero">3</div>
-                        <h3>Solicita</h3>
+                    <div class="p-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">3</div>
+                        <h3 class="h5">Solicitá</h3>
                     </div>
                     <div class="paso-line"></div>
-                    <div class="paso">
-                        <div class="paso-numero">4</div>
-                        <h3>Retirá y Devolvé</h3>
+                    <div class="p-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">4</div>
+                        <h3 class="h5">Retirá y Devolvé</h3>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
-        <section class="cta-section">
-            <div class="container text-center">
-                <h2>¡Únete a ToolShare CBA Hoy!</h2>
-                <p class="section-description">Registrate ahora y comenzá a compartir herramientas con tu comunidad.</p>
-                <a href="#registro" class="btn btn-primary btn-large mt-2">Crear cuenta</a>
+        <section class="py-5 text-center">
+            <div class="container">
+                <h2 class="fw-bold">¡Unite a ToolShare CBA Hoy!</h2>
+                <p class="lead text-muted mb-4">Registrate ahora y comenzá a compartir herramientas con tu comunidad.
+                </p>
+                <a href="#registro" class="btn btn-success btn-lg px-5 shadow">Crear cuenta</a>
             </div>
         </section>
+
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="bg-dark text-light py-4 text-center mt-auto">
         <div class="container">
-            <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
-            <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
+            <p class="mb-1">&copy; 2026 ToolShare CBA. | <strong>Proyecto ISPC</strong></p>
+            <p class="mb-0 text-muted small">Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
