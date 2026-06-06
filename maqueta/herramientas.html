@@ -1,207 +1,260 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolShare Córdoba</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/usuario-dashboard.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
 
 </head>
+
 <body>
-   <header> 
-        <div class="navbar navbar-expand-lg bg-dark">
-            <div class="logo"> ToolShare CBA</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="QuienesSomos.html">Quíenes Somos</a></li>
-                    <li><a href="Herramientas.html">Herramientas</a></li>
-                </ul>
-            </nav>
-            <a href="login.html">Iniciar Sesión</a>
-        </div>
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a class="logo" href="index.html">ToolShare CBA</a>
+                <!--Boton hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion"
+                    aria-controls="menuNavegacion" aria-expanded="false" aria-label="Activar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuNavegacion">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="QuienesSomos.html">Quiénes Somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Herramientas.html">Herramientas</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex">
+                        <a href="login.html" class="btn btn-primary">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
+    <!-- Comienza main -->
+    <main class="container">
 
-    <main class="panel-layout container">
-        <aside class="sidebar-categorias">
-            <h3>Herramientas</h3>
-            <nav class="nav-categorias">
-            <ul>
-                <li><a href="#albañileria">Albañilería</a></li>
-                <li><a href="#electricidad">Electricidad</a></li>
-                <li><a href="#plomeria">Plomería</a></li>
-                <li><a href="#carpinteria">Carpintería</a></li>
-                <h3>Panel De Usuario</h3>
-                <li><a href="dashboard-usuario.html"> Panel Usuario</a></li>
-                <li><a href="Gestion-prestamo.html">Gestion de  prestamos</a></li>
-            </ul>
-            </nav>
+        <div class="row">
 
-            
-        </aside>
-       
-        
+            <div class="col-lg-3">
 
-        <section class="contenido-herramientas">
-            <h2>Herramientas para Albañilería</h2>
-            <div id="albañileria" class="grid-3">
-                <div class="card">
-                    <h3>Nivel de mano</h3>
-                    <img src="./assets/herramientas/nivel-de-mano.jfif" alt="nivel de mano" class="card-img-herramienta" >
-                    <p>Disponible para préstamo.</p>
-                </div>
-                <div class="card">
-                    <h3>Amoladora</h3>
-                    <img src="./assets/herramientas/amoladora.jfif" alt="amoladora" class="card-img-herramienta">
-                    <p>Disponible para préstamo.</p>
-                </div>
-                <div class="card">
-                    <h3>Cuchara albañil</h3>
-                    <img src="./assets/herramientas/cuchara.jfif" alt="Cuchara albañil" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
+                <aside class="sidebar-categorias">
 
-                <div class="card">
-                    <h3>Carretilla</h3>
-                    <img src="/maqueta/assets/herramientas/Carretilla.jfif" alt="Carretilla" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p> 
-                </div>
-            
-            </div>
-            <h2 id="electricidad">Herramienta para Electricidad</h2>  
-            <div id="electricidad" class="grid-3">
-                
-                <div class="card"> 
-                    <h3>Pinza ampirometrica</h3>
-                    <img src="./assets/herramientas/pinza-ampírometrica.jfif" alt=" pinza ampirometrica" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Pinza pelacable tranversal</h3>
-                    <img src="./assets/herramientas/pinza-pelacable-tranverzal.jfif" alt="pinza pelacable " class="card-img-herramienta">
-                    <p>Disponible para préstamo</p> 
-                </div>
+                    <nav class="nav-categorias">
 
-                <div class="card">
-                    <h3>Multimetro</h3>
-                    <img src="./assets/herramientas/multimetro.jfif" alt="" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
+                        <h2>Herramientas Disponible</h2>
+                        <ul>
+                            <li><a href="#albanileria">Albañilería</a></li>
+                            <li><a href="#electricidad">Electricidad</a></li>
+                            <li><a href="#plomeria">Plomería</a></li>
+                            <li><a href="#carpinteria">Carpintería</a></li>
 
-                <div class="card">
-                    <h3>Destornillador plano</h3>
-                    <img src="./assets/herramientas/destornillador-plano.png" alt="Destornillador plano" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
+                        </ul>
+                        <h2>Panel De Usuario</h2>
+                        <ul>
 
-                <div class="card">
-                    <h3>Pinza universal</h3>
-                    <img src="./assets/herramientas/pinza-de-fuerza.png" alt="pinza univerzal" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Pinza de punta</h3>
-                    <img src="./assets/herramientas/pinza-de-punta.png" alt="pinza de punta" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Pinza de corte "Alicate" </h3>
-                    <img src="./assets/herramientas/alicate.png" alt="alicate " class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                
-            </div>
-         <!-- Herramienta de Plomeria -->
-            <h2>Herramientas para Plomeria</h2>
-            <div id="plomeria" class="grid-3">
-                
-                <div class="card"> 
-                    <h3>Llave Stilson</h3>
-                    <img src="/maqueta/assets/herramientas/Stilson.png" alt=" llave Stilson" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Tarraja</h3>
-                    <img src="./assets/herramientas/tarraja.jpeg" alt="tarraja " class="card-img-herramienta">
-                    <p>Disponible para préstamo</p> 
-                </div>
+                            <li><a href="usuario-dashboard.html"> Panel Usuario</a></li>
+                            <li><a href="usuario-gestion-prestamo.html">Gestion de prestamos</a></li>
+                        </ul>
+                    </nav>
 
-                <div class="card">
-                    <h3>Pinza pico loro</h3>
-                    <img src="./assets/herramientas/pinza-pico-loro.jpeg" alt="pinza pico loro" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-
-                <div class="card">
-                    <h3>Llave Francesa</h3>
-                    <img src="./assets/herramientas/Francesa.jpeg" alt="Llave Francesa" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-
-                <div class="card">
-                    <h3>Corta tubo</h3>
-                    <img src="./assets/herramientas/corta-tubo.jpeg" alt="corta tubo" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Pinza multiuso</h3>
-                    <img src="./assets/herramientas/pinza-multi-uso.jpeg" alt="pinza multiuso" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-              
-            </div>
-            
-            <!-- Herramientas carpinteria -->
-            <h2>Herramientas para Carpinteria</h2>
-            <div id="carpinteria" class="grid-3">
-                
-                <div class="card"> 
-                    <h3>Taladro a bateria kit</h3>
-                    <img src="./assets/herramientas/taladro-inalambrico-kit.jfif" alt=" llave Stilson" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Kit Mechas Fostner</h3>
-                    <img src="./assets/herramientas/mechas-Fosner.jpeg" alt=" mechas fostner " class="card-img-herramienta">
-                    <p>Disponible para préstamo</p> 
-                </div>
-
-                <div class="card">
-                    <h3>Cinta Métrica Stanley 5m</h3>
-                    <img src="./assets/herramientas/metro.jpeg" alt="Cinta Métrica Stanley" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-
-                <div class="card">
-                    <h3>Router </h3>
-                    <img src="./assets/herramientas/router.jpeg" alt="router" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-
-                <div class="card">
-                    <h3>Caladora</h3>
-                    <img src="./assets/herramientas/caladora.jpeg" alt="caladora" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-                <div class="card">
-                    <h3>Sierra circular</h3>
-                    <img src="./assets/herramientas/Sierra-Circular.jpeg" alt="sierra circular" class="card-img-herramienta">
-                    <p>Disponible para préstamo</p>
-                </div>
-              
+                </aside>
             </div>
 
+            <section class="col-lg-9">
 
-        </section>
-     
-    
-    
+                <h1>Catalogo de Herramientas </h1>
+                <h2>Herramientas para Albañilería</h2>
+                <div id="albanileria" class="grid-3">
+                    <div class="card">
+                        <h3>Nivel de mano</h3>
+                        <img src="./assets/herramientas/nivel-de-mano.jfif" alt="nivel de mano"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Amoladora</h3>
+                        <img src="./assets/herramientas/amoladora.jfif" alt="amoladora" class="card-img-herramienta">
+                        <p>Disponible para préstamo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cuchara albañil</h3>
+                        <img src="./assets/herramientas/cuchara.jfif" alt="Cuchara albañil"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Carretilla</h3>
+                        <img src="/maqueta/assets/herramientas/Carretilla.jfif" alt="Carretilla"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                </div>
+
+                <h2 id="electricidad">Herramienta para Electricidad</h2>
+                <div class="grid-3">
+
+                    <div class="card">
+                        <h3>Pinza ampirometrica</h3>
+                        <img src="./assets/herramientas/pinza-ampírometrica.jfif" alt=" pinza ampirometrica"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pinza pelacable tranversal</h3>
+                        <img src="./assets/herramientas/pinza-pelacable-tranverzal.jfif" alt="pinza pelacable "
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Multimetro</h3>
+                        <img src="./assets/herramientas/multimetro.jfif" alt="" class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Destornillador plano</h3>
+                        <img src="./assets/herramientas/destornillador-plano.png" alt="Destornillador plano"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Pinza universal</h3>
+                        <img src="./assets/herramientas/pinza-de-fuerza.png" alt="pinza univerzal"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pinza de punta</h3>
+                        <img src="./assets/herramientas/pinza-de-punta.png" alt="pinza de punta"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pinza de corte "Alicate" </h3>
+                        <img src="./assets/herramientas/alicate.png" alt="alicate " class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                </div>
+                <!-- Herramienta de Plomeria -->
+                <h2>Herramientas para Plomeria</h2>
+                <div id="plomeria" class="grid-3">
+
+                    <div class="card">
+                        <h3>Llave Stilson</h3>
+                        <img src="/maqueta/assets/herramientas/Stilson.png" alt=" llave Stilson"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Tarraja</h3>
+                        <img src="./assets/herramientas/tarraja.jpeg" alt="tarraja " class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Pinza pico loro</h3>
+                        <img src="./assets/herramientas/pinza-pico-loro.jpeg" alt="pinza pico loro"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Llave Francesa</h3>
+                        <img src="./assets/herramientas/francesa.jpeg" alt="Llave Francesa"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Corta tubo</h3>
+                        <img src="./assets/herramientas/corta-tubo.jpeg" alt="corta tubo" class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pinza multiuso</h3>
+                        <img src="./assets/herramientas/pinza-multi-uso.jpeg" alt="pinza multiuso"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                </div>
+
+                <!-- Herramientas carpinteria -->
+                <h2>Herramientas para Carpinteria</h2>
+                <div id="carpinteria" class="grid-3">
+
+                    <div class="card">
+                        <h3>Taladro a bateria kit</h3>
+                        <img src="./assets/herramientas/taladro-inalambrico-kit.jfif" alt=" llave Stilson"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Kit Mechas Fostner</h3>
+                        <img src="./assets/herramientas/mechas-fosner.jpeg" alt=" mechas fostner "
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Cinta Métrica Stanley 5m</h3>
+                        <img src="./assets/herramientas/metro.jpeg" alt="Cinta Métrica Stanley"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Router </h3>
+                        <img src="./assets/herramientas/router.jpeg" alt="router" class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Caladora</h3>
+                        <img src="./assets/herramientas/caladora.jpeg" alt="caladora" class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Sierra circular</h3>
+                        <img src="./assets/herramientas/sierra-circular.jpeg" alt="sierra circular"
+                            class="card-img-herramienta">
+                        <p>Disponible para préstamo</p>
+                    </div>
+
+                </div>]
+
+
+
+            </section>
+
+        </div>
+
     </main>
-   <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2024 ToolShare CBA. | <strong>Proyecto ISPC 2026</strong></p>
             <p>Equipo: ByteBuildersCBA - Desarrollo Frontend</p>
         </div>
     </footer>
+
+    <script src="./assets/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
+
 </html>
