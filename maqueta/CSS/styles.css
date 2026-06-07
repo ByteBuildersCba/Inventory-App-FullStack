@@ -677,3 +677,25 @@ table td {
     padding: 12px;
     border-bottom: 1px solid #eaeaea;
 }
+
+/* --- INTEGRACIÓN PERSONALIZADA CON BOOTSTRAP DE JERE --- */
+
+/* Botón con el color institucional exacto de ToolShare CBA */
+.btn-custom-green {
+    background-color: var(--primary, #2E7D32);
+    border-color: var(--primary, #2E7D32);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-custom-green:hover {
+    background-color: var(--secondary, #1B5E20);
+    border-color: var(--secondary, #1B5E20);
+}
+
+/* Quitar el subrayado feo de los links en Bootstrap para mantener consistencia */
+.decoration-none {
+    text-decoration: none;
+}
+.decoration-none:hover {
+    text-decoration: underline;
+}
