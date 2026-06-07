@@ -1,0 +1,56 @@
+/* --- EXTENSIONES EXCLUSIVAS DEL PANEL DE CONTROL (No duplicadas) --- */
+
+table th {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.cabecera-verde th {
+    background-color: var(--verde-principal, #246627) !important; 
+    color: #ffffff !important; 
+    font-weight: 600;
+}
+
+/* --- AJUSTES DE CONTROL PARA EVIDENCIA 3 --- */
+.estado-pendiente {
+    background-color: #ffc107; 
+    color: #222222;            
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+/* Forzar los colores de marca sobre los valores por defecto de Bootstrap */
+.btn-success {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-success:hover:not(:disabled) {
+    background-color: var(--secondary) !important;
+}
+
+/* Corrección de color para el botón Devuelve (Gris Técnico) */
+.btn-devolver {
+    background-color: #455a64 !important;
+    border-color: #455a64 !important;
+    color: var(--white) !important;
+}
+
+.btn-devolver:hover:not(:disabled) {
+    background-color: #37474f !important;
+}
+
+.btn-devolver:disabled {
+    background-color: #455a64 !important;
+    opacity: 0.5;
+}
