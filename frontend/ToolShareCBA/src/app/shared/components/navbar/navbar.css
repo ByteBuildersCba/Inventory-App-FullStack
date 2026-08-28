@@ -1,0 +1,10 @@
+.logo {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #198754;
+}
+
+.logo:hover {
+  color: #146c43;
+}
