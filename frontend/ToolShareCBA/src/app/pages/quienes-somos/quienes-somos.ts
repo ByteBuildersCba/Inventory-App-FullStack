@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Navbar } from '../../shared/components/navbar/navbar';
 
 @Component({
-  imports: [],
   selector: 'app-quienes-somos',
-  styleUrl: './quienes-somos.css',
+  imports: [Navbar],
   templateUrl: './quienes-somos.html',
+  styleUrl: './quienes-somos.css'
 })
 export class QuienesSomos {}
