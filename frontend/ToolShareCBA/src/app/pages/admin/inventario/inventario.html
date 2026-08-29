@@ -1,1 +1,123 @@
-<p>inventario works!</p>
+ <main class="container">
+        
+        <section class="section-light mt-2">
+            <h1 class="section-title">Inventario del Taller Comunitario</h1>
+            <p class="section-description">Panel de carga y control de stock para el Administrador.</p>
+
+            <div class="row g-4 mt-2">
+                <div class="col-12 col-md-8">
+                <article class="card shadow-sm p-4">
+                    <h2 class="mb-3 text-success">Registrar Nueva Herramienta</h2>
+                    <form [formGroup]= "inventarioForm" (ngSubmit)="onEnviar()"  class="row g-3">
+                         <div class="col-12 col-sm-6">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" formControlName="nombre" placeholder="Ej: Cuchara albañil" required>
+                              @if (inventarioForm.get('nombre')?.invalid && inventarioForm.get('nombre')?.touched) {
+                              <span class="text-danger">* El nombre es obligatorio.</span>}
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label class="form-label">Categoría:</label>
+                            <select formControlName="categoria" class="form-select" required>
+                                @if (inventarioForm.get('categoria')?.invalid && inventarioForm.get('categoria')?.touched) {
+                              <span class="text-danger">* El nombre es obligatorio.</span>}
+                                <option value="" disabled selected>Seleccione una categoría...</option>
+                                <option value="albañileria">Albañilería</option>
+                                <option value="electricidad">Electricidad</option>
+                                <option value="carpinteria">Carpintería</option>
+                                <option value="jardineria">Jardinería</option>
+                            </select> 
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label class="form-label">Estado fisico inicial:</label>
+                            <select formControlName = "estadoFisico" class="form-select" required>
+                                @if (inventarioForm.get('estadoFisico')?.invalid && inventarioForm.get('estadoFisico')?.touched) {
+                              <span class="text-danger">* El nombre es obligatorio.</span>}
+                                <option value="" disabled selected>Seleccione el estado...</option>
+                                <option value="excelente">Excelente</option>
+                                <option value="bueno">Bueno</option>
+                                <option value="regular">Regular / Requiere Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-6" >
+                            <label class="form-label">Código de Herramienta:</label>
+                            <input type="text" formControlName="codigo" class="form-control" placeholder="Ej: ALB-004" required>
+                             @if (inventarioForm.get('codigo')?.invalid && inventarioForm.get('codigo')?.touched) {
+                              <span class="text-danger">* El nombre es obligatorio.</span>}
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Descripcion / Observaciones</label>
+                            <textarea formControlName="descripcion" class="form-control" placeholder="Ej: Se ingresa con Estuche plastico sin accesorios adicionales " rows="3"></textarea>
+                        </div>
+                        <div class="col-12">
+                        <button type="submit" class="btn btn-success px-4">Ingresar Stock</button>
+                        </div>
+                    </form>
+                </article>
+                </div>
+                <div class="col-12 col-md-4">
+                <article class="card shadow-sm border-0 p-4 h-100 text-center d-flex flex-column justify-content-center">
+                    <h3 class="text-secondary project-subtitle">Resumen de Estado</h3>
+                    <p class="fs-4 my-2">Total herramientas registradas: <strong>4 unidades</strong>.</p>
+                </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-white pt-2">
+            <h2>Catálogo de Herramientas Existentes</h2>
+        <div class="table-responsive mt-3">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="cabecera-verde">
+                    <tr>
+                        <th>Código</th>
+                        <th>Herramienta</th>
+                        <th>Categoría</th>
+                        <th>Estado Físico</th>
+                        <th>Disponibilidad</th>
+                        <th>Observaciones</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ALB-001</td>
+                        <td>Nivel de mano</td>
+                        <td>Albañilería</td>
+                        <td>Excelente</td>
+                        <td>Disponible</td>
+                        <td>Donado por corralón del Barrio, sin marcas.</td>
+                        <td><button (click)="modificarDatos()"   class="btn btn-outline-success btn-sm">Modificar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ALB-002</td>
+                        <td>Taladro Percutor Bosch</td>
+                        <td>Albañilería</td>
+                        <td>Bueno</td>
+                        <td>En Préstamo</td> 
+                        <td>Se entrega con maletín plástico rígido.</td>
+                        <td><button (click)="modificarDatos()" class="btn btn-outline-success btn-sm">Modificar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ALB-003</td>
+                        <td>Cuchara de Albañil</td>
+                        <td>Albañilería</td>
+                        <td>Bueno</td>
+                        <td>En Demora</td>
+                        <td>Mango de madera desgaste de uso.</td>
+                        <td><button (click)="modificarDatos()"  class="btn btn-outline-success btn-sm">Modificar</button></td>
+                    </tr>
+                    <tr>
+                        <td>ELE-001</td>
+                        <td>Pinza pelacable transversal</td>
+                        <td>Electricidad</td>
+                        <td>Excelente</td>
+                        <td>En Préstamo</td>
+                        <td>Sin Descripcion</td>
+                        <td><button (click)="modificarDatos()" class="btn btn-outline-success btn-sm">Modificar</button></td>
+                    </tr>
+                </tbody>
+          </table>
+        </div>
+        </section>
+
+    </main>
