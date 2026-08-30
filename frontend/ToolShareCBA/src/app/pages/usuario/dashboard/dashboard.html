@@ -1,1 +1,43 @@
-<p>dashboard works!</p>
+
+<main class="container mt-4">
+    
+    <h1>Dashboard Usuario</h1>
+
+    <div class="row">
+       <div class="col-lg-3">
+            <aside class="sidebar-categorias">
+                <h2>Panel Usuario</h2>
+                <nav class ="nav-categorias">
+                    
+                    <ul>
+                        <li><a routerLink="/herramientas" >Herramientas</a></li>
+                        <li><a routerLink="/usuario/gestion-prestamo"  >Gestión de Préstamos</a></li>
+                    </ul>
+                </nav>
+
+            </aside>
+       </div>
+       <section class="col-lg-9">
+        
+            <h2>Mis Prestamos Activos</h2>
+            <div class = "card-prestamo">
+                <h3>Amoladora</h3>
+                <p class="fecha">&#128198; Devolución:16 de Septiembre, 2026</p>
+                <span class="status en-curso">En Curso</span>
+            </div>
+            <div class ="card-prestamo">
+                <h3>Kit Taladro inalambrico</h3>
+                <p class="fecha">&#128680; Debió devolverse el: 20 de Agosto, 2026</p>
+                <span class="status atrasado">Atrasado</span>
+
+            </div>
+            <div class="card-prestamo">
+                <h3>Destornillador</h3>
+                <p class="fecha">&#128198; Devolución: 28 de junio, 2026</p>
+                <span class="status devuelto">Devuelto</span>
+            </div>
+
+       </section>
+        
+    </div>
+</main>
