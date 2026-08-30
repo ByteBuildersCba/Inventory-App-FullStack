@@ -1,0 +1,100 @@
+.registro-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.registro-card {
+  border-radius: 14px;
+}
+
+
+/* Botón */
+
+.btn-custom-green {
+  background-color: #198754;
+  border-color: #198754;
+  transition: all 0.2s ease;
+}
+
+.btn-custom-green:hover:not(:disabled) {
+  background-color: #157347;
+  border-color: #146c43;
+  transform: translateY(-1px);
+}
+
+.btn-custom-green:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* Inputs y select */
+
+.form-control,
+.form-select {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+/* Campo inválido */
+
+.form-control.input-error,
+.form-select.input-error {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+}
+
+.form-control.input-error:focus,
+.form-select.input-error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+}
+
+
+/* Campo válido */
+
+.form-control.input-success,
+.form-select.input-success {
+  border-color: #198754;
+  background-color: #f7fff9;
+}
+
+.form-control.input-success:focus,
+.form-select.input-success:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+}
+
+
+/* Mensajes */
+
+.validation-error {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  animation: aparecer 0.2s ease-in-out;
+}
+
+
+/* Animación */
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
