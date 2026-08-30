@@ -1,1 +1,162 @@
-<p>login works!</p>
+<main class="login-page">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="card login-card shadow border-0 p-4">
+
+          <div class="card-body">
+
+            <h1 class="h3 card-title text-center mb-2 fw-bold text-dark">
+              Iniciar Sesión
+            </h1>
+
+            <p class="text-muted text-center small mb-4">
+              Accedé a tu cuenta para gestionar préstamos de herramientas.
+            </p>
+
+            <!-- Mensaje de éxito -->
+            @if (loginExitoso) {
+              <div class="alert alert-success text-center small" role="alert">
+                ¡Inicio de sesión correcto!
+              </div>
+            }
+
+            <!-- Mensaje general de error -->
+            @if (mensajeError) {
+              <div class="alert alert-danger text-center small" role="alert">
+                {{ mensajeError }}
+              </div>
+            }
+
+            <form (ngSubmit)="iniciarSesion()" novalidate>
+
+              <!-- Correo -->
+
+              <div class="mb-3">
+
+                <label
+                  for="email"
+                  class="form-label fw-semibold">
+
+                  Correo Electrónico:
+
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  [class.input-error]="emailTocado && !emailValido()"
+                  [class.input-success]="emailTocado && emailValido()"
+                  [(ngModel)]="email"
+                  (blur)="emailTocado = true"
+                  placeholder="ejemplo@correo.com">
+
+                @if (emailTocado && !email) {
+                  <div class="validation-error">
+                    El correo electrónico es obligatorio.
+                  </div>
+                }
+
+                @else if (emailTocado && !emailValido()) {
+                  <div class="validation-error">
+                    El formato del correo no es válido.
+                  </div>
+                }
+
+              </div>
+
+
+              <!-- Contraseña -->
+
+              <div class="mb-4">
+
+                <label
+                  for="password"
+                  class="form-label fw-semibold">
+
+                  Contraseña:
+
+                </label>
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  [class.input-error]="passwordTocado && !passwordValida()"
+                  [class.input-success]="passwordTocado && passwordValida()"
+                  [(ngModel)]="password"
+                  (blur)="passwordTocado = true"
+                  placeholder="Tu contraseña">
+
+                @if (passwordTocado && !password) {
+                  <div class="validation-error">
+                    La contraseña es obligatoria.
+                  </div>
+                }
+
+                @else if (passwordTocado && !passwordValida()) {
+                  <div class="validation-error">
+                    La contraseña debe tener al menos 6 caracteres.
+                  </div>
+                }
+
+              </div>
+
+
+              <!-- Botón -->
+
+              <div class="d-grid">
+
+                <button
+                  type="submit"
+                  class="btn btn-custom-green text-white fw-bold py-2"
+                  [disabled]="!formularioValido()">
+
+                  Iniciar Sesión
+
+                </button>
+
+              </div>
+
+            </form>
+
+
+            <!-- Registro -->
+
+            <div class="text-center mt-4 small">
+
+              <p class="mb-0">
+
+                ¿No tenés una cuenta?
+
+                <a
+                  routerLink="/registro"
+                  class="text-success fw-bold text-decoration-none">
+
+                  Registrate acá
+
+                </a>
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+

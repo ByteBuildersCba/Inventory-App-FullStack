@@ -1,1 +1,262 @@
-<p>registro works!</p>
+<main class="registro-page">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-8 col-lg-5">
+
+        <div class="card registro-card shadow border-0 p-4">
+
+          <div class="card-body">
+
+            <h1 class="h3 card-title text-center mb-2 fw-bold text-dark">
+              Crear Cuenta
+            </h1>
+
+            <p class="text-muted text-center small mb-4">
+              Unite a la comunidad para prestar o solicitar herramientas en Córdoba.
+            </p>
+
+
+            <!-- Éxito -->
+
+            @if (registroExitoso) {
+              <div
+                class="alert alert-success text-center small"
+                role="alert">
+
+                ¡Registro realizado correctamente!
+
+              </div>
+            }
+
+
+            <!-- Error general -->
+
+            @if (mensajeError) {
+              <div
+                class="alert alert-danger text-center small"
+                role="alert">
+
+                {{ mensajeError }}
+
+              </div>
+            }
+
+
+            <form
+              (ngSubmit)="registrar()"
+              novalidate>
+
+
+              <!-- Nombre -->
+
+              <div class="mb-3">
+
+                <label
+                  for="nombre"
+                  class="form-label fw-semibold">
+
+                  Nombre completo:
+
+                </label>
+
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  [class.input-error]="nombreTocado && !nombreValido()"
+                  [class.input-success]="nombreTocado && nombreValido()"
+                  [(ngModel)]="nombre"
+                  (blur)="nombreTocado = true"
+                  placeholder="Tu nombre y apellido">
+
+                @if (nombreTocado && !nombre) {
+
+                  <div class="validation-error">
+                    El nombre es obligatorio.
+                  </div>
+
+                }
+
+                @else if (nombreTocado && !nombreValido()) {
+
+                  <div class="validation-error">
+                    El nombre debe tener al menos 3 caracteres.
+                  </div>
+
+                }
+
+              </div>
+
+
+              <!-- Email -->
+
+              <div class="mb-3">
+
+                <label
+                  for="email"
+                  class="form-label fw-semibold">
+
+                  Correo Electrónico:
+
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  [class.input-error]="emailTocado && !emailValido()"
+                  [class.input-success]="emailTocado && emailValido()"
+                  [(ngModel)]="email"
+                  (blur)="emailTocado = true"
+                  placeholder="ejemplo@correo.com">
+
+                @if (emailTocado && !email) {
+
+                  <div class="validation-error">
+                    El correo electrónico es obligatorio.
+                  </div>
+
+                }
+
+                @else if (emailTocado && !emailValido()) {
+
+                  <div class="validation-error">
+                    El formato del correo no es válido.
+                  </div>
+
+                }
+
+              </div>
+
+
+              <!-- Contraseña -->
+
+              <div class="mb-3">
+
+                <label
+                  for="password"
+                  class="form-label fw-semibold">
+
+                  Contraseña:
+
+                </label>
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  [class.input-error]="passwordTocado && !passwordValida()"
+                  [class.input-success]="passwordTocado && passwordValida()"
+                  [(ngModel)]="password"
+                  (blur)="passwordTocado = true"
+                  placeholder="Crea una contraseña segura">
+
+                @if (passwordTocado && !password) {
+
+                  <div class="validation-error">
+                    La contraseña es obligatoria.
+                  </div>
+
+                }
+
+                @else if (passwordTocado && !passwordValida()) {
+
+                  <div class="validation-error">
+                    La contraseña debe tener al menos 6 caracteres.
+                  </div>
+
+                }
+
+              </div>
+
+
+              <!-- Rol -->
+
+              <div class="mb-4">
+
+                <label
+                  for="rol"
+                  class="form-label fw-semibold">
+
+                  Tipo de usuario:
+
+                </label>
+
+                <select
+                  id="rol"
+                  name="rol"
+                  class="form-select"
+                  [class.input-error]="rolTocado && !rolValido()"
+                  [class.input-success]="rolTocado && rolValido()"
+                  [(ngModel)]="rol"
+                  (blur)="rolTocado = true">
+
+                  <option value="user">
+                    Usuario (Vecino/Emprendedor)
+                  </option>
+
+                  <option value="admin">
+                    Administrador (Gestión)
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- Botón -->
+
+              <div class="d-grid">
+
+                <button
+                  type="submit"
+                  class="btn btn-custom-green text-white fw-bold py-2"
+                  [disabled]="!formularioValido()">
+
+                  Registrarse
+
+                </button>
+
+              </div>
+
+            </form>
+
+
+            <!-- Login -->
+
+            <div class="text-center mt-4 small">
+
+              <p class="mb-0">
+
+                ¿Ya tenés una cuenta?
+
+                <a
+                  routerLink="/login"
+                  class="text-success fw-bold text-decoration-none">
+
+                  Iniciá sesión acá
+
+                </a>
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
