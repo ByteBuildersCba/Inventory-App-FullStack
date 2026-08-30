@@ -9,5 +9,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
 })
 export class Navbar {
-  esAdmin:boolean = true;
+
+  esAdmin: boolean = false;
+
+  cambiarModo(): void {
+    this.esAdmin = !this.esAdmin;
+  }
+
 }
