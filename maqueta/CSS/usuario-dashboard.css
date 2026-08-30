@@ -50,7 +50,7 @@ main {
 
 .sidebar-categorias h2 {
     font-size: 1.3rem;
-    color: var(--secondary);
+    color: rgb (46, 125, 76);
     margin-bottom: 10px;
     border-bottom: 2px solid var(--light);
     padding-bottom: 10px;
