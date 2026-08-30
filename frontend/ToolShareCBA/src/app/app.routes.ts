@@ -4,7 +4,7 @@ import { QuienesSomos } from './pages/quienes-somos/quienes-somos';
 import { Herramientas } from './pages/herramientas/herramientas';
 import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
-import { NotFound } from './pages/not-found/not-found';
+import { Pagina404Component} from './pages/not-found/not-found';
 
 import { Dashboard as UsuarioDashboard } from './pages/usuario/dashboard/dashboard';
 import { GestionPrestamo } from './pages/usuario/gestion-prestamo/gestion-prestamo';
@@ -15,6 +15,7 @@ import { Solicitudes } from './pages/admin/solicitudes/solicitudes';
 
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: Home},
     { path: 'quienes-somos', component: QuienesSomos},
     { path: 'herramientas', component: Herramientas},
@@ -25,5 +26,5 @@ export const routes: Routes = [
     { path: 'admin/dashboard', component: AdminDashboard},
     { path: 'admin/inventario', component: Inventario},
     { path: 'admin/solicitudes', component: Solicitudes},
-    { path: '**', component: NotFound }
+    { path: '**', component: Pagina404Component}
 ];

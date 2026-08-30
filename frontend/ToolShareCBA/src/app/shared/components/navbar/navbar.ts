@@ -6,5 +6,14 @@ import { RouterLink } from '@angular/router';
   selector: 'app-navbar',
   styleUrl: './navbar.css',
   templateUrl: './navbar.html',
+  standalone: true,
 })
-export class Navbar {}
+export class Navbar {
+
+  esAdmin: boolean = false;
+
+  cambiarModo(): void {
+    this.esAdmin = !this.esAdmin;
+  }
+
+}

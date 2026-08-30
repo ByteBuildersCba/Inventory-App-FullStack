@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import {  RouterLink } from '@angular/router';
 import { Navbar } from '../../../shared/components/navbar/navbar';
+import { Footer } from '../../../shared/components/footer/footer';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { validate } from '@angular/forms/signals';
 
 @Component({
-  imports: [Navbar, RouterLink,ReactiveFormsModule],
+  imports: [Navbar, RouterLink,ReactiveFormsModule, Footer],
   selector: 'app-gestion-prestamo',
   styleUrl: './gestion-prestamo.css',
   templateUrl: './gestion-prestamo.html',
