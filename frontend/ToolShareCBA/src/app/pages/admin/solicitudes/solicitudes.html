@@ -1,0 +1,96 @@
+<main class="container">
+        
+       <section class="section-light position-relative">
+            <div class="position-absolute top-0 end-0 mt-2">
+                <a routerLink="/registro" class="btn btn-outline-success btn-sm">+ Registrar Vecino Presencial</a>
+            </div>
+            <h1 class="section-title">Panel de Control de Solicitudes</h1>
+            <p class="section-description">Monitoreo de alertas del sistema y trazabilidad comunitaria.</p>
+        <div class="row row-cols-1 row-cols-md-3 g-3 mt-2">
+            <div class="col">
+                <article class="card h-100 d-flex flex-column justify-content-between bg-warning text-dark border-0 shadow-sm">
+                    <div class="p-3"><h2 class="text-success">Alertas de Vencimiento Próximo</h2>
+                         <p>Hay 3 herramientas que están por superar el plazo de devolución establecido esta semana.</p>
+                    </div>            
+                </article>
+            </div>
+            
+            <div class="col"> 
+                <article class="card h-100 d-flex flex-column justify-content-between bg-danger text-white border-0 shadow-sm">
+                    <div class="p-3"><h2 class="text-success">Stock Crítico por Demora</h2>
+                    <p>La categoría "Albañilería" cuenta con baja disponibilidad debido a retrasos en las devoluciones.</p>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="col">
+                <article class="card h-100 d-flex flex-column justify-content-between shadow-sm">
+                    <div class="p-3"><h2 class="text-success">Impacto Comunitario</h2>
+                        <p>Total de préstamos activos esta semana: 24 solicitudes aprobadas con éxito.</p>
+                    </div>               
+                    </article>
+            </div>
+        </div>
+        </section>
+
+        <section class="section-white pt-2">
+            <h2 class="section-title">Solicitudes de Préstamo Pendientes</h2>
+            <p class="section-description">Evalúe los datos del vecino solicitante y determine la aprobación o rechazo del préstamo.</p>
+           <div class="table-responsive mt-3">
+            <table class="table table-striped align-middle">
+                <thead class="cabecera-verde">
+                    <tr>
+                        <th>ID Solicitud</th>
+                        <th>Vecino / Emprendedor</th>
+                        <th>Herramienta Requerida</th>
+                        <th>Fecha de Retiro</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Estado</th>
+                        <th>Observaciones / Motivos</th>
+                        <th>Acción Requerida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#2041</td>
+                        <td>Carlos Gómez</td>
+                        <td>Taladro Percutor Bosch</td>
+                        <td>01/06/2026</td>
+                        <td>22/07/2026</td>
+                        <td><span class="estado-pendiente">Pendiente</span></td>
+                        <td>
+                            <input type="text" class="form-control form-control-sm input-tabla" placeholder="Ej retira con caja rigida">
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">  
+                                <button class="btn btn-success btn-sm flex-fill">Aprobar</button>
+                                <button class="btn btn-danger btn-sm flex-fill">Rechazar</button>
+                                <button class="btn btn-sm btn-devolver flex-fill">Registrar Devolución</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#2042</td>
+                        <td>Ana Martínez</td>
+                        <td>Pinza pelacable transversal</td>
+                        <td>19/05/2026</td>
+                        <td>20/05/2026</td>
+                        <td><span class="estado-pendiente">Pendiente</span></td>
+                        <td>
+                            <input type="text" class="form-control form-control-sm input-tabla" placeholder="Ej: Controlar aislación">
+                        </td>
+                       <td>
+                            <div class="d-flex gap-2">
+                            <button class="btn btn-success btn-sm flex-fill" >Aprobar</button>
+                            <button class="btn btn-danger btn-sm flex-fill" >Rechazar</button>
+                            <button class="btn btn-sm btn-devolver flex-fill">Registrar Devolución</button>
+                             </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+    </main>
+

@@ -1,0 +1,108 @@
+.sidebar-categorias {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eaeaea;
+    position: sticky;     /* Hace que se quede fijo al bajar */
+    top: 100px;           /*  Deja espacio para que no lo tape el header */
+}
+
+.sidebar-categorias h2 {
+    font-size: 1.3rem;
+    color: rgb(46, 125, 76);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--light);
+    padding-bottom: 10px;
+}
+.form-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.prestamo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.form-group input, 
+.form-group select {
+    padding: 10px 12px;
+    border: 1px solid #00f84a;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--white);
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(29, 236, 185, 0.1);
+}
+
+/* Botón de envío */
+.btn-solicitar {
+    background-color: rgb(9, 78, 3);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: rgb(32, 18, 228);
+}
+
+.btn-solicitar:hover {
+    background-color: rgb(41, 139, 41);
+    box-shadow: var(--shadow);
+}
+
+
+/* Estilos para la barra lateral de categorías */
+.nav-categorias ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Efecto hover interactivo para la lista */
+.nav-categorias a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: rgb(46, 125, 76);
+    transition: rgb(32, 18, 228);
+}
+
+.nav-categorias a:hover {
+    background-color: var(--light);
+    color: var(--primary);
+    transform: translateX(5px); /* Pequeño desplazamiento hacia la derecha al pasar el mouse */
+}

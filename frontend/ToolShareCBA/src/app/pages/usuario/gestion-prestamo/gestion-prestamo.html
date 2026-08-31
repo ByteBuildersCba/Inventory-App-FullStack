@@ -1,0 +1,102 @@
+<main class="panel-layout container">
+    <div class="row">
+        <div class="col-lg-3">
+            <aside class="sidebar-categorias">
+                <h2>Panel usuario</h2>
+                <nav class="nav-categorias">
+                    <ul>
+                        <li><a routerLink="/usuario/dashboard">Panel de Usuario</a></li>
+                        <li><a routerLink="/herramientas">Herramientas</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+        <section class="col-lg-9">
+            <h1 class="section-title">Gestión de Préstamos</h1>
+            <h2 class="sub-title mt-2">Solicitar un Nuevo Préstamo</h2>
+            
+            <div class="card form-card">
+                <form class="prestamo-form" [formGroup]="SolicitudForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class="form-group">
+                        <label for="herramienta">Seleccionar Herramienta Disponible</label>
+                        <select id="herramienta" formControlName="herramienta">
+                            <optgroup label="Albañileria">
+                               <option value="" disabled selected>--Seleccione Herramientas Disponible--</option>
+                                <option value="nivel-mano">Nivel de mano</option>
+                                <option value="amoladora">Amoladora</option>
+                                <option value="carretilla">Carretilla</option>
+                                <option value="cuchara">Cuchara Albañil</option>
+                                
+                            </optgroup>
+                            <optgroup label="Electricidad">
+                                <option value="Multimetro">Multímetro</option>
+                                <option value="Alicate">Alicate</option>
+                                <option value="Destornillador">Destornillador plano</option>
+                                <option value="Pinza">Pinza Universal</option>
+                                <option value="Pinza de punta">Pinza de punta</option>
+                                <option value="Pinza Ampirometrica">Pinza Ampirométrica</option>
+                                <option value="Pinza Pelacable">Pinza Pelacable Tranversal</option>
+                            </optgroup>
+
+                            <optgroup label="Plomería">
+                                <option value="Llave Stilson">Llave Stilson</option>
+                                <option value="Trarraja">Trarraja</option>
+                                <option value="Pinza Pico loro">Pinza Pico loro</option>
+                                <option value="Llave Francesa">Llave Francesa</option>
+                                <option value="Corta tubo">Corta tubo</option>
+                                <option value="Pinza Multiuso">Pinza Multiuso</option>
+                            </optgroup>
+
+                            <optgroup label="Carpintería">
+                                <option value="Sierra Circular">Sierra Circular</option>
+                                <option value="Caladora">Caladora</option>
+                                <option value="Cinta Metrica">Cinta Métrica</option>
+                                <option value="Router">Router</option>
+                                <option value="Kit Mechas Fostner">Kit Mechas Fostner</option>
+                                <option value="Taladro Inalambrico">Taladro Inalámbrico</option>
+                            </optgroup>
+                            
+                        </select>
+                        
+                        <!-- Mensaje de error dinámico para Herramienta -->
+                        @if (SolicitudForm.get('herramienta')?.invalid && SolicitudForm.get('herramienta')?.touched) {
+                            <small class="text-danger" style="color: red;">Por favor, seleccioná una herramienta.</small>
+                        }
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fecha-retiro">Fecha de Retiro</label>
+                            <input type="date" id="fecha-retiro" formControlName="retiro">
+                            
+                            <!-- Mensaje de error dinámico para Retiro -->
+                            @if (SolicitudForm.get('retiro')?.invalid && SolicitudForm.get('retiro')?.touched) {
+                                <small class="text-danger" style="color: red;">La fecha de retiro es obligatoria.</small>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha-devolucion">Fecha de Devolución</label>
+                            <input type="date" id="fecha-devolucion" formControlName="devolucion">
+                            
+                            <!-- Mensaje de error dinámico para Devolución -->
+                            @if (SolicitudForm.get('devolucion')?.invalid && SolicitudForm.get('devolucion')?.touched) {
+                                <small class="text-danger" style="color: red;">La fecha de devolución es obligatoria.</small>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Bloque dinámico de la alerta de éxito-->
+                    @if (mostrarAlerta) {
+                        <div class="alert alert-success text-center mt-3" style="color: green;" role="alert">
+                             ¡Tu solicitud de préstamo fue confirmada con éxito!
+                        </div>
+                    }
+
+                    <button type="submit" class="btn-solicitar mt-2" [disabled]="SolicitudForm.invalid">Confirmar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,33 @@
+    <main class="container">
+        <section class="section-light">
+            <h1 class="section-title">Panel de Control General</h1>
+            <p class="section-description">Monitoreo de alertas del sistema y trazabilidad comunitaria.</p>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3"> 
+            <div class="col">
+                <article class="card h-100 d-flex flex-column justify-content-between">
+                    <div><h2 class="text-success">Alertas de Vencimientos</h2>
+                         <p>Hay 3 herramientas que superaron el plazo de devolución establecido.</p>
+                    </div>
+                    <a routerLink="/admin/solicitudes" class="btn btn-warning text-dark w-100 text-center">Ver Detalle</a>
+                </article>
+            </div>
+            <div class="col">
+                <article class="card h-100 d-flex flex-column justify-content-between">
+                    <span class="badge bg-danger text-white mb-2">¡Alerta!</span>
+                <div><h2 class="text-success">Stock Crítico</h2>
+                    <p>La categoría "Albañilería" cuenta con baja disponibilidad de stock.</p>
+                </div>    
+                <a routerLink="/admin/inventario" class="btn btn-danger w-100 text-center">Revisar Inventario</a>
+                </article>
+            </div>
+            <div class="col">
+                <article class="card h-100 d-flex flex-column justify-content-between">
+                <div><h2 class="text-success">Impacto Comunitario</h2>
+                    <p>Total de préstamos activos esta semana: 24 solicitudes aprobadas.</p>
+                </div>    
+                <a href="#" class="btn btn-success w-100 text-center">Ver Estadisticas</a>                
+                </article>
+            </div>          
+        </div>
+        </section>
+    </main>
