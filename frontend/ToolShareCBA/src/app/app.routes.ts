@@ -23,8 +23,16 @@ export const routes: Routes = [
     { path: 'registro', component: Registro},
     { path: 'usuario/dashboard', component: UsuarioDashboard},
     { path: 'usuario/gestion-prestamo', component: GestionPrestamo},
-    { path: 'admin/dashboard', component: AdminDashboard},
-    { path: 'admin/inventario', component: Inventario},
-    { path: 'admin/solicitudes', component: Solicitudes},
+   
+    {
+    path:'admin',
+    children : [
+    
+    { path: 'dashboard', component: AdminDashboard},
+    { path: 'inventario', component: Inventario},
+    { path: 'solicitudes', component: Solicitudes},
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    ]
+},
     { path: '**', component: Pagina404Component}
 ];
