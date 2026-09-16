@@ -47,6 +47,23 @@
                               <span class="text-danger">* El código es obligatorio.</span>}
                         </div>
                         <div class="col-12">
+                            <label for="form-label">URL de la imagen:</label>
+                            <input type="text" formControlName="imageUrl" class ="form-control" placeholder="Ej: https://ejemplo.com/herramienta.jpg">
+                            @if (inventarioForm.get('imageUrl')?.invalid && inventarioForm.get('imageUrl')?.touched) {
+                            <span class="text-danger">* La URL es obligatoria.</span>
+                            }
+                            
+                            
+                            <div class="col-12 col-sm-6">
+                                <label class="form-label">Cantidad (Stock Inicial):</label>
+                                <input type="number" formControlName="stockTotal" class="form-control" min="1">
+                                @if (inventarioForm.get('stockTotal')?.invalid && inventarioForm.get('stockTotal')?.touched) {
+                                <span class="text-danger">* La cantidad es obligatoria y mayor a 0.</span>
+                                }
+                            </div>
+                            
+                            </div>
+                            <div class="col-12">
                             <label class="form-label">Descripcion / Observaciones</label>
                             <textarea formControlName="descripcion" class="form-control" placeholder="Ej: Se ingresa con Estuche plastico sin accesorios adicionales " rows="3"></textarea>
                         </div>

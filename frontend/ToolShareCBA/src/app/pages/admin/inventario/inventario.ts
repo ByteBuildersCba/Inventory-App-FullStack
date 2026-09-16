@@ -17,12 +17,20 @@ export class Inventario {
       categoria: ['', [Validators.required]],
       estadoFisico: ['', [Validators.required]],
       codigo: ['', [Validators.required]],
-      descripcion: ['']
+      descripcion: [''],
+      imageUrl:['', [Validators.required]],
+      stockTotal:[1, [Validators.required, Validators.min(1)]],
+      
     })
   }
 
   onEnviar() {
     if (this.inventarioForm.valid) {
+      const nuevaHerramienta = {
+        ...this.inventarioForm.value,
+        stockDisponible: this.inventarioForm.value.stockTotal
+      };
+      
       console.log("Nueva herramienta registrada:", this.inventarioForm.value);
       alert("Herramienta cargada con éxito");
       this.inventarioForm.reset();
@@ -37,7 +45,10 @@ modificarDatos() {
     categoria: 'albañileria',
     estadoFisico: 'bueno',
     codigo: 'ALB-002',
-    descripcion: 'Se entrega con maletín plástico rígido.'
+    descripcion: 'Se entrega con maletín plástico rígido.',
+    imageUrl: 'https://ejemplo.com/taladro.jpg',
+      stockTotal: 2,
+      stockDisponible: 1
   });
   
   window.scrollTo({ top: 0, behavior: 'smooth' });
