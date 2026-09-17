@@ -1,0 +1,24 @@
+{
+  "name": "repo",
+  "version": "1.0.0",
+  "description": "Aplicación web desarrollada para gestionar el préstamo de herramientas comunitarias en la ciudad de Córdoba. El sistema busca facilitar el acceso a herramientas para trabajadores de oficio, emprendedores y aficionados, promoviendo una gestión organizada, transparente y accesible.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByteBuildersCba/Inventory-App-FullStack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ByteBuildersCba/Inventory-App-FullStack/issues"
+  },
+  "homepage": "https://github.com/ByteBuildersCba/Inventory-App-FullStack#readme",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
+}
