@@ -1,0 +1,107 @@
+/* Panel de Usuario */
+main { 
+    
+    min-height: calc(100vh - 100px);
+    padding: 40px 0;
+}
+
+h1{
+    font-size: 3.0rem;
+    text-align: center;
+    color: rgb(46, 125, 76);
+}
+h2{
+    font-size: 2.0rem;
+    color: rgb(38, 110, 61);
+    padding:20px;
+}
+
+/* --- ESTILOS DEL SIDEBAR --- */
+.sidebar-categorias {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eaeaea;
+    position: sticky;     /* Hace que se quede fijo al bajar */
+    top: 100px;           /*  Deja espacio para que no lo tape el header */
+}
+
+.sidebar-categorias h2 {
+    font-size: 1.3rem;
+    color: rgb(46, 125, 76);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--light);
+    padding-bottom: 10px;
+}
+
+
+
+.nav-categorias ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Efecto hover interactivo para la lista */
+.nav-categorias a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: rgb(46, 125, 76);
+    transition: rgb(32, 18, 228);
+}
+
+.nav-categorias a:hover {
+    background-color: var(--light);
+    color: var(--primary);
+    transform: translateX(5px); /* Pequeño desplazamiento hacia la derecha al pasar el mouse */
+}
+
+
+/* ---prestamo activo--- */
+.prestamos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.card-prestamo {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #03f137; /* Borde por defecto */
+    transition: var(--transition);
+}
+.card-prestamo:hover {
+    transform: translateY(-2px);
+}
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.card-prestamo:has(.en-curso) { border-left-color: #2b6cb0; }
+.status.en-curso {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
+}
+.card-prestamo:has(.atrasado) { border-left-color: #e53e3e; }
+.status.atrasado {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.card-prestamo:has(.devuelto) { border-left-color: var(--primary); }
+.status.devuelto {
+    background-color: #f0fff4;
+    color: var(--primary);
+}
+
+
