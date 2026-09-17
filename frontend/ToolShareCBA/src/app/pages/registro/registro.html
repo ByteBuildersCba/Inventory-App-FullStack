@@ -18,10 +18,10 @@
               Unite a la comunidad para prestar o solicitar herramientas en Córdoba.
             </p>
 
-
             <!-- Éxito -->
 
             @if (registroExitoso) {
+
               <div
                 class="alert alert-success text-center small"
                 role="alert">
@@ -29,12 +29,13 @@
                 ¡Registro realizado correctamente!
 
               </div>
-            }
 
+            }
 
             <!-- Error general -->
 
             @if (mensajeError) {
+
               <div
                 class="alert alert-danger text-center small"
                 role="alert">
@@ -42,13 +43,15 @@
                 {{ mensajeError }}
 
               </div>
+
             }
 
+            <!-- Formulario reactivo -->
 
             <form
+              [formGroup]="formulario"
               (ngSubmit)="registrar()"
               novalidate>
-
 
               <!-- Nombre -->
 
@@ -65,15 +68,22 @@
                 <input
                   type="text"
                   id="nombre"
-                  name="nombre"
                   class="form-control"
-                  [class.input-error]="nombreTocado && !nombreValido()"
-                  [class.input-success]="nombreTocado && nombreValido()"
-                  [(ngModel)]="nombre"
-                  (blur)="nombreTocado = true"
+                  formControlName="nombre"
+                  [class.input-error]="
+                    formulario.controls.nombre.touched &&
+                    formulario.controls.nombre.invalid
+                  "
+                  [class.input-success]="
+                    formulario.controls.nombre.touched &&
+                    formulario.controls.nombre.valid
+                  "
                   placeholder="Tu nombre y apellido">
 
-                @if (nombreTocado && !nombre) {
+                @if (
+                  formulario.controls.nombre.touched &&
+                  formulario.controls.nombre.hasError('required')
+                ) {
 
                   <div class="validation-error">
                     El nombre es obligatorio.
@@ -81,7 +91,10 @@
 
                 }
 
-                @else if (nombreTocado && !nombreValido()) {
+                @else if (
+                  formulario.controls.nombre.touched &&
+                  formulario.controls.nombre.hasError('minlength')
+                ) {
 
                   <div class="validation-error">
                     El nombre debe tener al menos 3 caracteres.
@@ -90,7 +103,6 @@
                 }
 
               </div>
-
 
               <!-- Email -->
 
@@ -107,15 +119,22 @@
                 <input
                   type="email"
                   id="email"
-                  name="email"
                   class="form-control"
-                  [class.input-error]="emailTocado && !emailValido()"
-                  [class.input-success]="emailTocado && emailValido()"
-                  [(ngModel)]="email"
-                  (blur)="emailTocado = true"
+                  formControlName="email"
+                  [class.input-error]="
+                    formulario.controls.email.touched &&
+                    formulario.controls.email.invalid
+                  "
+                  [class.input-success]="
+                    formulario.controls.email.touched &&
+                    formulario.controls.email.valid
+                  "
                   placeholder="ejemplo@correo.com">
 
-                @if (emailTocado && !email) {
+                @if (
+                  formulario.controls.email.touched &&
+                  formulario.controls.email.hasError('required')
+                ) {
 
                   <div class="validation-error">
                     El correo electrónico es obligatorio.
@@ -123,7 +142,10 @@
 
                 }
 
-                @else if (emailTocado && !emailValido()) {
+                @else if (
+                  formulario.controls.email.touched &&
+                  formulario.controls.email.hasError('email')
+                ) {
 
                   <div class="validation-error">
                     El formato del correo no es válido.
@@ -133,10 +155,9 @@
 
               </div>
 
-
               <!-- Contraseña -->
 
-              <div class="mb-3">
+              <div class="mb-4">
 
                 <label
                   for="password"
@@ -149,15 +170,22 @@
                 <input
                   type="password"
                   id="password"
-                  name="password"
                   class="form-control"
-                  [class.input-error]="passwordTocado && !passwordValida()"
-                  [class.input-success]="passwordTocado && passwordValida()"
-                  [(ngModel)]="password"
-                  (blur)="passwordTocado = true"
+                  formControlName="password"
+                  [class.input-error]="
+                    formulario.controls.password.touched &&
+                    formulario.controls.password.invalid
+                  "
+                  [class.input-success]="
+                    formulario.controls.password.touched &&
+                    formulario.controls.password.valid
+                  "
                   placeholder="Crea una contraseña segura">
 
-                @if (passwordTocado && !password) {
+                @if (
+                  formulario.controls.password.touched &&
+                  formulario.controls.password.hasError('required')
+                ) {
 
                   <div class="validation-error">
                     La contraseña es obligatoria.
@@ -165,7 +193,10 @@
 
                 }
 
-                @else if (passwordTocado && !passwordValida()) {
+                @else if (
+                  formulario.controls.password.touched &&
+                  formulario.controls.password.hasError('minlength')
+                ) {
 
                   <div class="validation-error">
                     La contraseña debe tener al menos 6 caracteres.
@@ -175,41 +206,6 @@
 
               </div>
 
-
-              <!-- Rol -->
-
-              <div class="mb-4">
-
-                <label
-                  for="rol"
-                  class="form-label fw-semibold">
-
-                  Tipo de usuario:
-
-                </label>
-
-                <select
-                  id="rol"
-                  name="rol"
-                  class="form-select"
-                  [class.input-error]="rolTocado && !rolValido()"
-                  [class.input-success]="rolTocado && rolValido()"
-                  [(ngModel)]="rol"
-                  (blur)="rolTocado = true">
-
-                  <option value="user">
-                    Usuario (Vecino/Emprendedor)
-                  </option>
-
-                  <option value="admin">
-                    Administrador (Gestión)
-                  </option>
-
-                </select>
-
-              </div>
-
-
               <!-- Botón -->
 
               <div class="d-grid">
@@ -217,7 +213,7 @@
                 <button
                   type="submit"
                   class="btn btn-custom-green text-white fw-bold py-2"
-                  [disabled]="!formularioValido()">
+                  [disabled]="formulario.invalid">
 
                   Registrarse
 
@@ -226,7 +222,6 @@
               </div>
 
             </form>
-
 
             <!-- Login -->
 
@@ -259,4 +254,3 @@
   </div>
 
 </main>
-

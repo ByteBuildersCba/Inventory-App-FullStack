@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UsuarioService } from '../../services/usuario';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,12 @@ export class Login {
 
   mensajeError: string = '';
   loginExitoso: boolean = false;
+
+  constructor(
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private auth: Auth
+  ) {}
 
   emailValido(): boolean {
     const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,9 +54,50 @@ export class Login {
       return;
     }
 
-    console.log('Email:', this.email);
-    console.log('Contraseña:', this.password);
+    this.usuarioService
+      .buscarPorCredenciales(this.email, this.password)
+      .subscribe({
 
-    this.loginExitoso = true;
+        next: (usuarios) => {
+
+          if (usuarios.length === 0) {
+
+            this.mensajeError =
+              'El correo o la contraseña son incorrectos.';
+
+            return;
+          }
+
+          const usuario = usuarios[0];
+
+          this.auth.iniciarSesion({
+            email: usuario.email,
+            rol: usuario.rol
+          });
+
+          this.loginExitoso = true;
+
+          if (usuario.rol === 'admin') {
+
+            this.router.navigate(['/admin/dashboard']);
+
+          } else {
+
+            this.router.navigate(['/usuario/dashboard']);
+
+          }
+
+        },
+
+        error: (error) => {
+
+          console.error('Error al iniciar sesión:', error);
+
+          this.mensajeError =
+            'No se pudo conectar con el servidor. Intentá nuevamente.';
+
+        }
+
+      });
   }
 }
