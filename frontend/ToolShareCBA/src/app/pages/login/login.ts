@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../services/usuario';
@@ -24,7 +24,8 @@ export class Login {
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
-    private auth: Auth
+    private auth: Auth,
+    private cdr: ChangeDetectorRef
   ) {}
 
   emailValido(): boolean {
@@ -51,6 +52,9 @@ export class Login {
     if (!this.formularioValido()) {
       this.mensajeError =
         'Por favor, corregí los campos marcados en rojo.';
+
+      this.cdr.markForCheck();
+
       return;
     }
 
@@ -65,6 +69,8 @@ export class Login {
             this.mensajeError =
               'El correo o la contraseña son incorrectos.';
 
+            this.cdr.markForCheck();
+
             return;
           }
 
@@ -76,6 +82,8 @@ export class Login {
           });
 
           this.loginExitoso = true;
+
+          this.cdr.markForCheck();
 
           if (usuario.rol === 'admin') {
 
@@ -95,6 +103,8 @@ export class Login {
 
           this.mensajeError =
             'No se pudo conectar con el servidor. Intentá nuevamente.';
+
+          this.cdr.markForCheck();
 
         }
 
