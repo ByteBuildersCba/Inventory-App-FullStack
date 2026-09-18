@@ -26,7 +26,7 @@
                                 <option value="jardineria">Jardinería</option>
                             </select> 
                              @if (inventarioForm.get('categoria')?.invalid && inventarioForm.get('categoria')?.touched) {
-                              <span class="text-danger">* La Categoria es obligatorio.</span>}
+                              <span class="text-danger">* La Categoria es obligatoria.</span>}
                         </div>
                         <div class="col-12 col-sm-6">
                             <label class="form-label">Estado fisico inicial:</label>
@@ -52,8 +52,8 @@
                             @if (inventarioForm.get('imageUrl')?.invalid && inventarioForm.get('imageUrl')?.touched) {
                             <span class="text-danger">* La URL es obligatoria.</span>
                             }
-                            
-                            
+                        </div>
+                 
                             <div class="col-12 col-sm-6">
                                 <label class="form-label">Cantidad (Stock Inicial):</label>
                                 <input type="number" formControlName="stockTotal" class="form-control" min="1">
@@ -62,11 +62,11 @@
                                 }
                             </div>
                             
-                            </div>
+                
                             <div class="col-12">
                             <label class="form-label">Descripcion / Observaciones</label>
                             <textarea formControlName="descripcion" class="form-control" placeholder="Ej: Se ingresa con Estuche plastico sin accesorios adicionales " rows="3"></textarea>
-                        </div>
+                            </div>
                         <div class="col-12">
                         <button type="submit" class="btn btn-success px-4">Ingresar Stock</button>
                         </div>
@@ -98,45 +98,27 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @for (herramienta of listaHerramientas; track herramienta.id){
                     <tr>
-                        <td>ALB-001</td>
-                        <td>Nivel de mano</td>
-                        <td>Albañilería</td>
-                        <td>Excelente</td>
-                        <td>Disponible</td>
-                        <td>Donado por corralón del Barrio, sin marcas.</td>
+                        <td>{{ herramienta.codigo }}</td>
+                        <td>{{ herramienta.nombre }}</td>
+                        <td>{{ herramienta.categoria }}</td>
+                        <td>{{ herramienta.estadoFisico }}</td>
+                        <td>{{ herramienta.stockDisponible > 0 ? 'Disponible' : 'Sin Stock' }}</td>
+                        <td>{{ herramienta.descripcion }}</td>
                         <td><button (click)="modificarDatos()"   class="btn btn-outline-success btn-sm">Modificar</button></td>
                     </tr>
-                    <tr>
-                        <td>ALB-002</td>
-                        <td>Taladro Percutor Bosch</td>
-                        <td>Albañilería</td>
-                        <td>Bueno</td>
-                        <td>En Préstamo</td> 
-                        <td>Se entrega con maletín plástico rígido.</td>
-                        <td><button (click)="modificarDatos()" class="btn btn-outline-success btn-sm">Modificar</button></td>
-                    </tr>
-                    <tr>
-                        <td>ALB-003</td>
-                        <td>Cuchara de Albañil</td>
-                        <td>Albañilería</td>
-                        <td>Bueno</td>
-                        <td>En Demora</td>
-                        <td>Mango de madera desgaste de uso.</td>
-                        <td><button (click)="modificarDatos()"  class="btn btn-outline-success btn-sm">Modificar</button></td>
-                    </tr>
-                    <tr>
-                        <td>ELE-001</td>
-                        <td>Pinza pelacable transversal</td>
-                        <td>Electricidad</td>
-                        <td>Excelente</td>
-                        <td>En Préstamo</td>
-                        <td>Sin Descripcion</td>
-                        <td><button (click)="modificarDatos()" class="btn btn-outline-success btn-sm">Modificar</button></td>
-                    </tr>
+                    
+                    }
+                    @empty {
+                        <tr>
+                            <td colspan="7" class="text-center">No hay herramientas registradas en la base de datos.</td>
+        
+                        </tr>
+                    }
                 </tbody>
           </table>
         </div>
-        </section>
+    </section>
 
-    </main>
+</main>
