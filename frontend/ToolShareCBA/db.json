@@ -45,5 +45,14 @@
       "id": "5guL7l3b4e4"
     }
   ],
+  "contactos": [
+    {
+      "nombre": "euge",
+      "email": "euge@gmail.com",
+      "mensaje": "hola annananannanana",
+      "fecha": "2026-09-20T00:38:29.965Z",
+      "id": "qX9i9Z3m1fU"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
