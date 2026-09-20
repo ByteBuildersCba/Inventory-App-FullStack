@@ -55,6 +55,13 @@
       "password": "123456",
       "rol": "user",
       "id": "4SsClQksl1o"
+    },
+    {
+      "nombre": "David",
+      "email": "david@gmail.com",
+      "password": "123456",
+      "rol": "user",
+      "id": "YUPV8hChr18"
     }
   ],
   "herramientas": [
@@ -110,6 +117,17 @@
       "mensaje": "hola annananannanana",
       "fecha": "2026-09-20T00:38:29.965Z",
       "id": "qX9i9Z3m1fU"
+    }
+  ],
+  "prestamos": [
+    {
+      "herramienta": "carretilla",
+      "retiro": "2026-09-21",
+      "devolucion": "2026-09-25",
+      "estado": "Pendiente",
+      "usuarioSolicitante": "David",
+      "fechaPeticion": "20/9/2026",
+      "id": "Bp226ADo5YU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
