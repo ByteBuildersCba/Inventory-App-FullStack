@@ -54,5 +54,28 @@
       "id": "qX9i9Z3m1fU"
     }
   ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Administrador",
+      "email": "admin@toolshare.com",
+      "password": "123456",
+      "rol": "admin"
+    },
+    {
+      "id": "2",
+      "nombre": "Usuario",
+      "email": "usuario@toolshare.com",
+      "password": "123456",
+      "rol": "user"
+    },
+    {
+      "nombre": "Matias Aranda",
+      "email": "matiasaranda426@gmail.com",
+      "password": "456123",
+      "rol": "user",
+      "id": "nk3ledMskwg"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

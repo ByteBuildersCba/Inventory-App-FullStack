@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Auth } from '../../../services/auth';
 
 @Component({
   imports: [RouterLink],
@@ -10,10 +11,22 @@ import { RouterLink } from '@angular/router';
 })
 export class Navbar {
 
-  esAdmin: boolean = false;
+  constructor(
+    private auth: Auth,
+    private router: Router
+  ) {}
 
-  cambiarModo(): void {
-    this.esAdmin = !this.esAdmin;
+  get esAdmin(): boolean {
+    return this.auth.obtenerRol() === 'admin';
+  }
+
+  get estaLogueado(): boolean {
+    return this.auth.obtenerUsuario() !== null;
+  }
+
+  cerrarSesion(): void {
+    this.auth.cerrarSesion();
+    this.router.navigate(['/home']);
   }
 
 }
