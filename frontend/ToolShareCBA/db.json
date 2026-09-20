@@ -1,20 +1,78 @@
 {
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Administrador",
+      "email": "admin@toolshare.com",
+      "password": "admin123",
+      "rol": "admin"
+    },
+    {
+      "email": "prueba@test.com",
+      "nombre": "Prueba",
+      "rol": "user",
+      "password": "123456",
+      "id": "DzxwP647uxI"
+    },
+    {
+      "nombre": "jere",
+      "email": "jere4298@gmail.com",
+      "password": "jere2214",
+      "rol": "user",
+      "id": "VacaVhL-1BQ"
+    },
+    {
+      "nombre": "Jeremias Exequiel",
+      "email": "jere4298@gmail.com",
+      "password": "jere2214",
+      "rol": "user",
+      "id": "OchvXlFeqnQ"
+    },
+    {
+      "nombre": "Jeremias Exequiel",
+      "email": "jere98@gmail.com",
+      "password": "121212",
+      "rol": "user",
+      "id": "bfSHfjhMAyY"
+    },
+    {
+      "nombre": "Jeremias Exequiel",
+      "email": "jere4298@gmail.com",
+      "password": "jere2214",
+      "rol": "user",
+      "id": "53PIPbl2N38"
+    },
+    {
+      "nombre": "Jere",
+      "email": "jere4298@gmail.com",
+      "password": "121212",
+      "rol": "user",
+      "id": "mdY2RHtwpB4"
+    },
+    {
+      "nombre": "Jeremias Exequiel",
+      "email": "jere4298@gmail.com",
+      "password": "123456",
+      "rol": "user",
+      "id": "4SsClQksl1o"
+    }
+  ],
   "herramientas": [
     {
       "id": "1",
       "nombre": "Taladro Percutor Bosch",
-      "categoria": "albañileria",
+      "categoria": "albaÃ±ileria",
       "estadoFisico": "bueno",
       "codigo": "ALB-002",
-      "descripcion": "Se entrega con maletín plástico rígido.",
+      "descripcion": "Se entrega con maletÃ­n plÃ¡stico rÃ­gido.",
       "imageUrl": "https://ejemplo.com/taladro.jpg",
       "stockTotal": 2,
       "stockDisponible": 2
     },
     {
       "id": "2",
-      "nombre": "Cuchara de Albañil",
-      "categoria": "albañileria",
+      "nombre": "Cuchara de AlbaÃ±il",
+      "categoria": "albaÃ±ileria",
       "estadoFisico": "bueno",
       "codigo": "ALB-003",
       "descripcion": "Mango de madera con desgaste de uso.",
@@ -52,29 +110,6 @@
       "mensaje": "hola annananannanana",
       "fecha": "2026-09-20T00:38:29.965Z",
       "id": "qX9i9Z3m1fU"
-    }
-  ],
-  "usuarios": [
-    {
-      "id": "1",
-      "nombre": "Administrador",
-      "email": "admin@toolshare.com",
-      "password": "123456",
-      "rol": "admin"
-    },
-    {
-      "id": "2",
-      "nombre": "Usuario",
-      "email": "usuario@toolshare.com",
-      "password": "123456",
-      "rol": "user"
-    },
-    {
-      "nombre": "Matias Aranda",
-      "email": "matiasaranda426@gmail.com",
-      "password": "456123",
-      "rol": "user",
-      "id": "nk3ledMskwg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
