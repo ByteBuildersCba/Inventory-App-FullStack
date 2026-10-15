@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {InventarioService} from '../../../services/inventario'
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -8,10 +9,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './inventario.html',
   standalone : true,
 })
-export class Inventario {
+export class Inventario implements OnInit {
   inventarioForm: FormGroup;
+  listaHerramientas: any[] = [];
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(
+    private formBuilder: FormBuilder,
+    private inventarioService : InventarioService  )
+    {
     this.inventarioForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       categoria: ['', [Validators.required]],
@@ -23,23 +28,42 @@ export class Inventario {
       
     })
   }
+  ngOnInit(): void {
 
-  onEnviar() {
+    this.cargarHerramientas();
+  }
+  cargarHerramientas(): void {
+    this.inventarioService.obtenerHerramientas().subscribe({
+      next: (datos) => {
+        this.listaHerramientas = datos;
+      },
+      error: (err) => console.error('Error al traer la herramienta:', err)
+    });
+  }
+
+  onEnviar(): void {
     if (this.inventarioForm.valid) {
       const nuevaHerramienta = {
         ...this.inventarioForm.value,
         stockDisponible: this.inventarioForm.value.stockTotal
       };
+      this.inventarioService.guardarHerramienta(nuevaHerramienta).subscribe({
+        next:() => {
+          alert('Herramienta guardada con exito en la Base de Datos');
+          this.inventarioForm.reset();
+          this.cargarHerramientas();
+
+        },
+        error:(err) => console.error('Error al guardar:', err)
+      });
       
-      console.log("Nueva herramienta registrada:", this.inventarioForm.value);
-      alert("Herramienta cargada con éxito");
-      this.inventarioForm.reset();
+      
     } else {
       this.inventarioForm.markAllAsTouched();
     }
   }
   
-modificarDatos() {
+modificarDatos(): void {
   this.inventarioForm.patchValue({
     nombre: 'Taladro Percutor Bosch',
     categoria: 'albañileria',

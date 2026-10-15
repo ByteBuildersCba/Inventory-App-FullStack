@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export interface UsuarioAutenticado {
   email: string;
@@ -10,21 +10,21 @@ export interface UsuarioAutenticado {
 })
 export class Auth {
 
-  private usuarioActual: UsuarioAutenticado | null = null;
+  private usuarioActual = signal<UsuarioAutenticado | null>(null);
 
   iniciarSesion(usuario: UsuarioAutenticado): void {
-    this.usuarioActual = usuario;
+    this.usuarioActual.set(usuario);
   }
 
   obtenerUsuario(): UsuarioAutenticado | null {
-    return this.usuarioActual;
+    return this.usuarioActual();
   }
 
   obtenerRol(): 'user' | 'admin' | null {
-    return this.usuarioActual?.rol ?? null;
+    return this.usuarioActual()?.rol ?? null;
   }
 
   cerrarSesion(): void {
-    this.usuarioActual = null;
+    this.usuarioActual.set(null);
   }
 }

@@ -89,37 +89,29 @@
 
         </ul>
 
-        <!-- BOTÓN PARA CAMBIAR DE MODO -->
+        <!-- ACCIONES DE SESIÓN -->
         <div class="d-flex align-items-center gap-2">
 
-          @if (esAdmin) {
+          @if (estaLogueado) {
 
             <button
               type="button"
-              class="btn btn-outline-secondary btn-sm"
-              (click)="cambiarModo()"
+              class="btn btn-outline-danger"
+              (click)="cerrarSesion()"
             >
-              Modo Usuario
+              Cerrar Sesión
             </button>
 
           } @else {
 
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-sm"
-              (click)="cambiarModo()"
+            <a
+              routerLink="/login"
+              class="btn btn-primary"
             >
-              Modo Admin
-            </button>
+              Iniciar Sesión
+            </a>
 
           }
-
-          <a
-            routerLink="/login"
-            class="btn btn-primary"
-          >
-            Iniciar Sesión
-          </a>
 
         </div>
 
@@ -127,3 +119,4 @@
     </div>
   </nav>
 </header>
+
