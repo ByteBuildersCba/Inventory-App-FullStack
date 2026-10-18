@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
     providedIn: 'root'
 })
 export class InventarioService {
-    private apiUrl = 'http://localhost:3000/herramientas';
+    private apiUrl = 'http://127.0.0.1:8000/api/v1/herramientas/';
 constructor(private http: HttpClient){}
 obtenerHerramientas(): Observable<any>{
     return this.http.get(this.apiUrl);
