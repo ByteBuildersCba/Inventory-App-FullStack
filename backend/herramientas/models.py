@@ -6,15 +6,15 @@ from django.db import models
 class Herramienta(models.Model):
 
     class Categoria(models.TextChoices):
-        MANUAL = "MANUAL", "Manual"
-        ELECTRICA = "ELECTRICA", "Eléctrica"
-        NEUMATICA = "NEUMATICA", "Neumática"
-        HIDRAULICA = "HIDRAULICA", "Hidráulica"
+        ALBANILERIA = "albañileria", "Albañilería"
+        ELECTRICIDAD = "electricidad", "Electricidad"
+        CARPINTERIA = "carpinteria", "Carpintería"
+        JARDINERIA = "jardineria", "Jardinería"
 
     class EstadoFisico(models.TextChoices):
-        EXCELENTE = "EXCELENTE", "Excelente"
-        BUENO = "BUENO", "Bueno"
-        REGULAR = "REGULAR", "Regular"
+        EXCELENTE = "excelente", "Excelente"
+        BUENO = "bueno", "Bueno"
+        REGULAR = "regular", "Regular / Requiere Mantenimiento"
 
     nombre = models.CharField(max_length=100)
     categoria = models.CharField(
@@ -46,8 +46,8 @@ class Herramienta(models.Model):
     )
 
     stock_total = models.PositiveIntegerField(
-        validators=[MinValueValidator(0)],
-    )
+        validators=[MinValueValidator(1)])
+    
 
     stock_disponible = models.PositiveIntegerField(
         default=1,
@@ -69,4 +69,4 @@ class Herramienta(models.Model):
                 raise ValidationError(errores)
 
     def __str__(self):
-        return f"{self.nombre} - {self.codigo}"
+        return f"{self.nombre}  ({self.codigo})"

@@ -10,7 +10,7 @@ class HerramientaModelTests(TestCase):
     def crear_herramienta(self, **cambios):
         datos = {
             "nombre": "Taladro percutor",
-            "categoria": Herramienta.Categoria.MANUAL,
+            "categoria": Herramienta.Categoria.ALBANILERIA,
             "estado_fisico": Herramienta.EstadoFisico.BUENO,
             "codigo": "ALB-0001",
             "descripcion": "Taladro en buen estado.",
