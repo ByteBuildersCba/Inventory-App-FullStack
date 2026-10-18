@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-
+from prestamos.views import PrestamoListAPIView
 from usuarios.views_auth import LoginView, PerfilPruebaView
 
 
@@ -25,4 +25,6 @@ urlpatterns = [
         "api/v1/",
         include("herramientas.urls"),
     ),
+
+    path('api/v1/prestamos/', PrestamoListAPIView.as_view(), name='prestamos_list'),
 ]
