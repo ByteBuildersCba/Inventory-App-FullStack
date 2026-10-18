@@ -143,3 +143,6 @@ vite.config.ts.timestamp-*
 #protegemos los archivos de entorno y la carpeta virtual
 backend/.env
 backend/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
