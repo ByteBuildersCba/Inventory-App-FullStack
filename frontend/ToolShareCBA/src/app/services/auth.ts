@@ -1,7 +1,10 @@
+
 import { Injectable, signal } from '@angular/core';
 
 export interface UsuarioAutenticado {
+  id: number;
   email: string;
+  nombre: string;
   rol: 'user' | 'admin';
 }
 
@@ -9,10 +12,10 @@ export interface UsuarioAutenticado {
   providedIn: 'root'
 })
 export class Auth {
-
   private usuarioActual = signal<UsuarioAutenticado | null>(null);
 
-  iniciarSesion(usuario: UsuarioAutenticado): void {
+  iniciarSesion(usuario: UsuarioAutenticado, token: string): void {
+    sessionStorage.setItem('token', token);
     this.usuarioActual.set(usuario);
   }
 
@@ -24,7 +27,12 @@ export class Auth {
     return this.usuarioActual()?.rol ?? null;
   }
 
+  obtenerToken(): string | null {
+    return sessionStorage.getItem('token');
+  }
+
   cerrarSesion(): void {
+    sessionStorage.removeItem('token');
     this.usuarioActual.set(null);
   }
 }

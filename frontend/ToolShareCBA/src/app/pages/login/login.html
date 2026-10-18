@@ -1,13 +1,9 @@
+
 <main class="login-page">
-
   <div class="container">
-
     <div class="row justify-content-center">
-
       <div class="col-12 col-md-6 col-lg-4">
-
         <div class="card login-card shadow border-0 p-4">
-
           <div class="card-body">
 
             <h1 class="h3 card-title text-center mb-2 fw-bold text-dark">
@@ -18,145 +14,117 @@
               Accedé a tu cuenta para gestionar préstamos de herramientas.
             </p>
 
-            <!-- Mensaje de éxito -->
             @if (loginExitoso) {
               <div class="alert alert-success text-center small" role="alert">
                 ¡Inicio de sesión correcto!
               </div>
             }
 
-            <!-- Mensaje general de error -->
             @if (mensajeError) {
               <div class="alert alert-danger text-center small" role="alert">
                 {{ mensajeError }}
               </div>
             }
 
-            <form (ngSubmit)="iniciarSesion()" novalidate>
+            <form [formGroup]="formulario"
+                  (ngSubmit)="iniciarSesion()"
+                  novalidate>
 
-              <!-- Correo -->
-
+              <!-- Correo electrónico -->
               <div class="mb-3">
-
-                <label
-                  for="email"
-                  class="form-label fw-semibold">
-
-                  Correo Electrónico:
-
+                <label for="email" class="form-label fw-semibold">
+                  Correo electrónico:
                 </label>
 
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  formControlName="email"
                   class="form-control"
-                  [class.input-error]="emailTocado && !emailValido()"
-                  [class.input-success]="emailTocado && emailValido()"
-                  [(ngModel)]="email"
-                  (blur)="emailTocado = true"
-                  placeholder="ejemplo@correo.com">
+                  [class.input-error]="formulario.controls.email.invalid &&
+                    (formulario.controls.email.touched || enviado)"
+                  [class.input-success]="formulario.controls.email.valid &&
+                    formulario.controls.email.touched"
+                  placeholder="ejemplo@correo.com"
+                  autocomplete="username">
 
-                @if (emailTocado && !email) {
-                  <div class="validation-error">
-                    El correo electrónico es obligatorio.
-                  </div>
+                @if (formulario.controls.email.touched || enviado) {
+                  @if (formulario.controls.email.hasError('required')) {
+                    <div class="validation-error">
+                      El correo electrónico es obligatorio.
+                    </div>
+                  } @else if (formulario.controls.email.hasError('email')) {
+                    <div class="validation-error">
+                      El formato del correo no es válido.
+                    </div>
+                  }
                 }
-
-                @else if (emailTocado && !emailValido()) {
-                  <div class="validation-error">
-                    El formato del correo no es válido.
-                  </div>
-                }
-
               </div>
 
-
               <!-- Contraseña -->
-
               <div class="mb-4">
-
-                <label
-                  for="password"
-                  class="form-label fw-semibold">
-
+                <label for="password" class="form-label fw-semibold">
                   Contraseña:
-
                 </label>
 
                 <input
                   type="password"
                   id="password"
-                  name="password"
+                  formControlName="password"
                   class="form-control"
-                  [class.input-error]="passwordTocado && !passwordValida()"
-                  [class.input-success]="passwordTocado && passwordValida()"
-                  [(ngModel)]="password"
-                  (blur)="passwordTocado = true"
-                  placeholder="Tu contraseña">
+                  [class.input-error]="formulario.controls.password.invalid &&
+                    (formulario.controls.password.touched || enviado)"
+                  [class.input-success]="formulario.controls.password.valid &&
+                    formulario.controls.password.touched"
+                  placeholder="Tu contraseña"
+                  autocomplete="current-password">
 
-                @if (passwordTocado && !password) {
-                  <div class="validation-error">
-                    La contraseña es obligatoria.
-                  </div>
+                @if (formulario.controls.password.touched || enviado) {
+                  @if (formulario.controls.password.hasError('required')) {
+                    <div class="validation-error">
+                      La contraseña es obligatoria.
+                    </div>
+                  } @else if (formulario.controls.password.hasError('minlength')) {
+                    <div class="validation-error">
+                      La contraseña debe tener al menos 6 caracteres.
+                    </div>
+                  }
                 }
-
-                @else if (passwordTocado && !passwordValida()) {
-                  <div class="validation-error">
-                    La contraseña debe tener al menos 6 caracteres.
-                  </div>
-                }
-
               </div>
 
-
-              <!-- Botón -->
-
+              <!-- Botón de inicio de sesión -->
               <div class="d-grid">
-
                 <button
                   type="submit"
                   class="btn btn-custom-green text-white fw-bold py-2"
-                  [disabled]="!formularioValido()">
+                  [disabled]="formulario.invalid || cargando">
 
-                  Iniciar Sesión
-
+                  @if (cargando) {
+                    Ingresando...
+                  } @else {
+                    Iniciar sesión
+                  }
                 </button>
-
               </div>
 
             </form>
 
-
-            <!-- Registro -->
-
+            <!-- Enlace al registro -->
             <div class="text-center mt-4 small">
-
               <p class="mb-0">
-
                 ¿No tenés una cuenta?
-
                 <a
                   routerLink="/registro"
                   class="text-success fw-bold text-decoration-none">
-
                   Registrate acá
-
                 </a>
-
               </p>
-
             </div>
 
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </main>
 

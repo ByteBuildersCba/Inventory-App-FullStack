@@ -1,113 +1,100 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
+import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UsuarioService } from '../../services/usuario';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { AuthApi } from '../../services/auth-api';
 import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, RouterLink],
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
 export class Login {
-
-  email: string = '';
-  password: string = '';
-
-  emailTocado: boolean = false;
-  passwordTocado: boolean = false;
-
-  mensajeError: string = '';
-  loginExitoso: boolean = false;
+  formulario;
+  enviado = false;
+  cargando = false;
+  mensajeError = '';
+  loginExitoso = false;
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
-    private usuarioService: UsuarioService,
-    private auth: Auth,
-    private cdr: ChangeDetectorRef
-  ) {}
-
-  emailValido(): boolean {
-    const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return patronEmail.test(this.email);
-  }
-
-  passwordValida(): boolean {
-    return this.password.length >= 6;
-  }
-
-  formularioValido(): boolean {
-    return this.emailValido() && this.passwordValida();
+    private authApi: AuthApi,
+    private auth: Auth
+  ) {
+    this.formulario = this.fb.nonNullable.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6)
+        ]
+      ]
+    });
   }
 
   iniciarSesion(): void {
-
-    this.emailTocado = true;
-    this.passwordTocado = true;
-
+    this.enviado = true;
     this.mensajeError = '';
     this.loginExitoso = false;
 
-    if (!this.formularioValido()) {
-      this.mensajeError =
-        'Por favor, corregí los campos marcados en rojo.';
-
-      this.cdr.markForCheck();
-
+    if (this.formulario.invalid || this.cargando) {
+      this.formulario.markAllAsTouched();
       return;
     }
 
-    this.usuarioService
-      .buscarPorCredenciales(this.email, this.password)
-      .subscribe({
+    this.cargando = true;
 
-        next: (usuarios) => {
+    const { email, password } = this.formulario.getRawValue();
 
-          if (usuarios.length === 0) {
+    this.authApi.iniciarSesion(email.trim(), password).subscribe({
+      next: (respuesta) => {
+        this.auth.iniciarSesion(
+          respuesta.usuario,
+          respuesta.token
+        );
 
-            this.mensajeError =
-              'El correo o la contraseña son incorrectos.';
+        this.loginExitoso = true;
+        this.cargando = false;
 
-            this.cdr.markForCheck();
-
-            return;
-          }
-
-          const usuario = usuarios[0];
-
-          this.auth.iniciarSesion({
-            email: usuario.email,
-            rol: usuario.rol
-          });
-
-          this.loginExitoso = true;
-
-          this.cdr.markForCheck();
-
-          if (usuario.rol === 'admin') {
-
-            this.router.navigate(['/admin/dashboard']);
-
-          } else {
-
-            this.router.navigate(['/usuario/dashboard']);
-
-          }
-
-        },
-
-        error: (error) => {
-
-          console.error('Error al iniciar sesión:', error);
-
-          this.mensajeError =
-            'No se pudo conectar con el servidor. Intentá nuevamente.';
-
-          this.cdr.markForCheck();
-
+        if (respuesta.usuario.rol === 'admin') {
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/usuario/dashboard']);
         }
+      },
+      error: (error: HttpErrorResponse) => {
+  this.cargando = false;
+  this.loginExitoso = false;
 
-      });
+  console.error('Error de inicio de sesión:', error);
+
+  if (error.status === 400 || error.status === 401) {
+    this.mensajeError =
+      typeof error.error?.error === 'string'
+        ? error.error.error
+        : 'El correo o la contraseña son incorrectos.';
+  } else {
+    this.mensajeError =
+      'No se pudo conectar con el servidor. Intentá nuevamente.';
+  }
+}
+    });
   }
 }
