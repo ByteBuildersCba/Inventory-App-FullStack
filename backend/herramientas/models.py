@@ -32,15 +32,15 @@ class Herramienta(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex=r'^[A-Z]{3}-\d{4}$',
-                message='El código debe tener el formato AAA-1234.',
+                regex=r'^[A-Z]{3}-\d{3}$',
+                message='El código debe tener el formato AAA-123.',
             )
         ],
     )
 
     descripcion = models.TextField(blank=True, null=True)
 
-    image_url = models.URLField(
+    image_url = models.CharField(
         max_length=200,
         blank=True,
     )
