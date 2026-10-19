@@ -1,43 +1,46 @@
-
-<main class="container mt-4">
-    
-    <h1>Dashboard Usuario</h1>
-
+<main class="panel-layout container">
     <div class="row">
-       <div class="col-lg-3">
+        <div class="col-lg-3">
             <aside class="sidebar-categorias">
-                <h2>Panel Usuario</h2>
-                <nav class ="nav-categorias">
-                    
+                <h2>Panel usuario</h2>
+                <nav class="nav-categorias">
                     <ul>
-                        <li><a routerLink="/herramientas" >Herramientas</a></li>
-                        <li><a routerLink="/usuario/gestion-prestamo"  >Gestión de Préstamos</a></li>
+                        <li><a routerLink="/usuario/dashboard">Mis préstamos</a></li>
+                        <li><a routerLink="/usuario/gestion-prestamo">Gestión de Préstamos</a></li>
                     </ul>
                 </nav>
-
             </aside>
-       </div>
-       <section class="col-lg-9">
-        
-            <h2>Mis Prestamos Activos</h2>
-            <div class = "card-prestamo">
-                <h3>Amoladora</h3>
-                <p class="fecha">&#128198; Devolución:16 de Septiembre, 2026</p>
-                <span class="status en-curso">En Curso</span>
-            </div>
-            <div class ="card-prestamo">
-                <h3>Kit Taladro inalambrico</h3>
-                <p class="fecha">&#128680; Debió devolverse el: 20 de Agosto, 2026</p>
-                <span class="status atrasado">Atrasado</span>
+        </div>
 
-            </div>
-            <div class="card-prestamo">
-                <h3>Destornillador</h3>
-                <p class="fecha">&#128198; Devolución: 28 de junio, 2026</p>
-                <span class="status devuelto">Devuelto</span>
-            </div>
+        <section class="col-lg-9">
+            <h1 class="section-title">Mis Préstamos Activos</h1>
 
-       </section>
-        
+            @if (cargando) {
+                <!-- Mensaje de espera mientras Django responde -->
+                <div class="alert alert-secondary mt-3 text-center">
+                    Cargando préstamos...
+                </div>
+            } @else if (misPrestamos.length === 0) {
+                <!-- Solo se muestra si Django terminó de responder Y la lista está vacía -->
+                <div class="alert alert-info mt-3">
+                    No tienes préstamos registrados en este momento.
+                </div>
+            } @else {
+                <!-- Lista de tarjetas de préstamos -->
+                <div class="prestamos-lista mt-3">
+                    @for (prestamo of misPrestamos; track prestamo.id) {
+                        <div class="card-prestamo">
+                            <div class="prestamo-info">
+                                <h3 class="m-0">{{ prestamo.herramienta }}</h3>
+                            </div>
+                            <div class="prestamo-detalles d-flex align-items-center gap-3">
+                                <span class="fecha">📅 Devolución: {{ prestamo.fecha_devolucion }}</span>
+                                <span class="status {{ prestamo.estado | lowercase }}">{{ prestamo.estado }}</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </section>
     </div>
 </main>
