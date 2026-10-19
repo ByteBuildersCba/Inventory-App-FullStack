@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from prestamos.views import PrestamoListAPIView
-from usuarios.views_auth import LoginView, PerfilPruebaView
+from usuarios.views_auth import LoginView, RegistroView, PerfilPruebaView
 
 
 urlpatterns = [
@@ -13,6 +13,11 @@ urlpatterns = [
         "api/usuarios/login/",
         LoginView.as_view(),
         name="login",
+    ),
+    path(
+        "api/usuarios/registro/",
+        RegistroView.as_view(),
+        name="registro",
     ),
     path(
         "api/usuarios/perfil-prueba/",

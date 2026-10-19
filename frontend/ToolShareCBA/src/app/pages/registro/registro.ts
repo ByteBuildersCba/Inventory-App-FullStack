@@ -6,7 +6,7 @@ import {
   Validators
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { UsuarioService } from '../../services/usuario';
+import { AuthApi } from '../../services/auth-api';
 
 @Component({
   selector: 'app-registro',
@@ -32,14 +32,13 @@ export class Registro {
 
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(6)
+      Validators.minLength(8)
     ])
-  });
+  }); // <--- Cierra el FormGroup
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private authApi: AuthApi) {}
 
   registrar(): void {
-
     this.registroExitoso = false;
     this.mensajeError = '';
 
@@ -50,34 +49,24 @@ export class Registro {
       return;
     }
 
-    const nuevoUsuario = {
-      nombre: this.formulario.value.nombre!,
-      email: this.formulario.value.email!,
-      password: this.formulario.value.password!,
-      rol: 'user' as const
-    };
-    console.log('Usuario que Angular va a enviar:', nuevoUsuario);
+    const { nombre, email, password } = this.formulario.value;
 
-    this.usuarioService.crearUsuario(nuevoUsuario).subscribe({
-
-      next: () => {
-
+    this.authApi.registrarUsuario(nombre!, email!, password!).subscribe({
+      next: (respuesta) => {
         this.registroExitoso = true;
-
         this.formulario.reset();
-
       },
+      error: (err) => {
+        console.error('Error al registrar usuario:', err);
 
-      error: (error) => {
-
-        console.error('Error al registrar usuario:', error);
-
-        this.mensajeError =
-          'No se pudo registrar el usuario. Intentá nuevamente.';
-
+        if (err.error && err.error.error) {
+          this.mensajeError = err.error.error;
+        } else {
+          this.mensajeError =
+            'No se pudo conectar con el servidor. Intentá nuevamente.';
+        }
       }
-
     });
-
   }
+
 }
