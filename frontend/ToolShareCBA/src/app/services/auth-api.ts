@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -36,7 +35,7 @@ export class AuthApi {
     password: string
   ): Observable<RespuestaLogin> {
     return this.http.post<RespuestaLogin>(
-      this.apiUrl,
+      `${this.apiUrl}/login/`,
       { email, password }
     );
   }
