@@ -1,46 +1,98 @@
 <main class="panel-layout container">
-    <div class="row">
-        <div class="col-lg-3">
-            <aside class="sidebar-categorias">
-                <h2>Panel usuario</h2>
-                <nav class="nav-categorias">
-                    <ul>
-                        <li><a routerLink="/usuario/dashboard">Mis préstamos</a></li>
-                        <li><a routerLink="/usuario/gestion-prestamo">Gestión de Préstamos</a></li>
-                    </ul>
-                </nav>
-            </aside>
-        </div>
-
-        <section class="col-lg-9">
-            <h1 class="section-title">Mis Préstamos Activos</h1>
-
-            @if (cargando) {
-                <!-- Mensaje de espera mientras Django responde -->
-                <div class="alert alert-secondary mt-3 text-center">
-                    Cargando préstamos...
-                </div>
-            } @else if (misPrestamos.length === 0) {
-                <!-- Solo se muestra si Django terminó de responder Y la lista está vacía -->
-                <div class="alert alert-info mt-3">
-                    No tienes préstamos registrados en este momento.
-                </div>
-            } @else {
-                <!-- Lista de tarjetas de préstamos -->
-                <div class="prestamos-lista mt-3">
-                    @for (prestamo of misPrestamos; track prestamo.id) {
-                        <div class="card-prestamo">
-                            <div class="prestamo-info">
-                                <h3 class="m-0">{{ prestamo.herramienta }}</h3>
-                            </div>
-                            <div class="prestamo-detalles d-flex align-items-center gap-3">
-                                <span class="fecha">📅 Devolución: {{ prestamo.fecha_devolucion }}</span>
-                                <span class="status {{ prestamo.estado | lowercase }}">{{ prestamo.estado }}</span>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
-        </section>
+  <div class="row">
+    <div class="col-lg-3">
+      <aside class="sidebar-categorias">
+        <h2>Panel usuario</h2>
+        <nav class="nav-categorias">
+          <ul>
+            <li><a routerLink="/usuario/dashboard">Mis préstamos</a></li>
+            <li><a routerLink="/usuario/gestion-prestamo">Gestión de Préstamos</a></li>
+          </ul>
+        </nav>
+      </aside>
     </div>
+
+    <section class="col-lg-9">
+      <h1 class="section-title">Mis Préstamos</h1>
+
+      @if (cargando) {
+        <div class="alert alert-secondary mt-3 text-center">
+          Cargando préstamos...
+        </div>
+      } @else {
+        @if (cantidadVencidos > 0) {
+          <div class="alert alert-danger mt-3" role="alert">
+            Tienes {{ cantidadVencidos }}
+            herramienta(s) vencida(s). Por favor, coordina su devolución.
+          </div>
+        }
+
+        <section class="mt-4">
+          <h2>Préstamos activos y por retirar</h2>
+
+          @if (prestamosActivos.length === 0) {
+            <div class="alert alert-info mt-3">
+              No tienes préstamos activos o pendientes.
+            </div>
+          } @else {
+            <div class="prestamos-lista mt-3">
+              @for (prestamo of prestamosActivos; track prestamo.id) {
+                <article class="card-prestamo {{ estadoVisual(prestamo) }}">
+                  <div class="prestamo-info">
+                    <h3 class="m-0">{{ prestamo.herramienta }}</h3>
+                  </div>
+
+                  <div class="prestamo-detalles d-flex align-items-center gap-3">
+                    <span class="fecha">
+                      📅 Fecha límite: {{ prestamo.fecha_devolucion }}
+                    </span>
+
+                    <span class="status {{ estadoVisual(prestamo) }}">
+                      {{
+                        estadoVisual(prestamo) === 'vencido'
+                          ? 'Vencido'
+                          : prestamo.estado
+                      }}
+                    </span>
+                  </div>
+                </article>
+              }
+            </div>
+          }
+        </section>
+
+        <section class="mt-5">
+          <h2>Historial</h2>
+
+          @if (historialPrestamos.length === 0) {
+            <div class="alert alert-light mt-3">
+              Todavía no tienes préstamos finalizados.
+            </div>
+          } @else {
+            <div class="prestamos-lista mt-3">
+              @for (prestamo of historialPrestamos; track prestamo.id) {
+                <article class="card-prestamo {{ estadoVisual(prestamo) }}">
+                  <div class="prestamo-info">
+                    <h3 class="m-0">{{ prestamo.herramienta }}</h3>
+                  </div>
+
+                  <div class="prestamo-detalles d-flex align-items-center gap-3">
+                    @if (prestamo.fecha_devolucion_real) {
+                      <span class="fecha">
+                        📅 Devuelta: {{ prestamo.fecha_devolucion_real }}
+                      </span>
+                    }
+
+                    <span class="status {{ estadoVisual(prestamo) }}">
+                      {{ prestamo.estado }}
+                    </span>
+                  </div>
+                </article>
+              }
+            </div>
+          }
+        </section>
+      }
+    </section>
+  </div>
 </main>

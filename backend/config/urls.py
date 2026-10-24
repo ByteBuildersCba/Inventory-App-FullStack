@@ -1,8 +1,9 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from prestamos.views import PrestamoListAPIView
+from prestamos.views import MisPrestamosAPIView
 from usuarios.views_auth import LoginView, RegistroView, PerfilPruebaView
+from prestamos.views import MisPrestamosAPIView, AdminPrestamoListAPIView, AdminPrestamoDetailAPIView
 
 
 urlpatterns = [
@@ -27,9 +28,23 @@ urlpatterns = [
 
     # API de herramientas
     path(
-        "api/v1/",
+        "api/v1/herramientas/",
         include("herramientas.urls"),
     ),
 
-    path('api/v1/prestamos/', PrestamoListAPIView.as_view(), name='prestamos_list'),
+    path(
+    "api/v1/prestamos/",
+    MisPrestamosAPIView.as_view(),
+    name="prestamos_list",
+    ),
+    path(
+        "api/v1/prestamos/admin/",
+        AdminPrestamoListAPIView.as_view(),
+        name="admin_prestamos_list",
+    ),
+    path(
+        "api/v1/prestamos/<int:pk>/estado/",
+        AdminPrestamoDetailAPIView.as_view(),
+        name="admin_prestamos_estado",
+    ),
 ]
