@@ -93,6 +93,7 @@
                         <th>Categoría</th>
                         <th>Estado Físico</th>
                         <th>Disponibilidad</th>
+                        <th>Cantidad</th>
                         <th>Observaciones</th>
                         <th>Acción</th>
                     </tr>
@@ -105,6 +106,7 @@
                         <td>{{ herramienta.categoria }}</td>
                         <td>{{ herramienta.estadoFisico }}</td>
                         <td>{{ herramienta.stockDisponible > 0 ? 'Disponible' : 'Sin Stock' }}</td>
+                        <td>{{ herramienta.stockDisponible }} de {{ herramienta.stockTotal }}</td>
                         <td>{{ herramienta.descripcion }}</td>
                         <td><button (click)="modificarDatos()"   class="btn btn-outline-success btn-sm">Modificar</button></td>
                     </tr>
@@ -112,7 +114,7 @@
                     }
                     @empty {
                         <tr>
-                            <td colspan="7" class="text-center">No hay herramientas registradas en la base de datos.</td>
+                            <td colspan="8" class="text-center">No hay herramientas registradas en la base de datos.</td>
         
                         </tr>
                     }
