@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {InventarioService} from '../../../services/inventario'
 
@@ -15,7 +15,8 @@ export class Inventario implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private inventarioService : InventarioService  )
+    private inventarioService : InventarioService,
+    private cd: ChangeDetectorRef)
     {
     this.inventarioForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
@@ -35,7 +36,8 @@ export class Inventario implements OnInit {
   cargarHerramientas(): void {
     this.inventarioService.obtenerHerramientas().subscribe({
       next: (datos) => {
-        this.listaHerramientas = datos;
+        this.listaHerramientas =  Array.isArray(datos) ? datos : [];
+        this.cd.detectChanges();
       },
       error: (err) => console.error('Error al traer la herramienta:', err)
     });
