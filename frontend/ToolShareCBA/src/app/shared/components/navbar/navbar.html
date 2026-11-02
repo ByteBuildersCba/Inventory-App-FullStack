@@ -1,7 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
-
       <a class="logo navbar-brand fw-bold text-success" routerLink="/home">
         ToolShare CBA
       </a>
@@ -19,8 +18,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="menuNavegacion">
-
-        <!-- NAVEGACIÓN PÚBLICA / GENERAL -->
+        <!-- Navegación pública -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" routerLink="/home">Home</a>
@@ -33,14 +31,14 @@
           </li>
         </ul>
 
-        <!-- ACCIONES DE SESIÓN (DERECHA) -->
+        <!-- Acciones de sesión -->
         <div class="d-flex align-items-center gap-2">
-
           @if (estaLogueado) {
-
-            <!-- Un solo botón para acceder al panel personal -->
-            <a routerLink="/usuario/dashboard" class="btn btn-outline-success">
-              👤 Mi Panel
+            <a
+              [routerLink]="esAdmin ? '/admin/dashboard' : '/usuario/dashboard'"
+              class="btn btn-outline-success"
+            >
+              👤 {{ esAdmin ? 'Panel administrador' : 'Mi Panel' }}
             </a>
 
             <button
@@ -50,17 +48,12 @@
             >
               Cerrar Sesión
             </button>
-
           } @else {
-
             <a routerLink="/login" class="btn btn-success">
               Iniciar Sesión
             </a>
-
           }
-
         </div>
-
       </div>
     </div>
   </nav>
