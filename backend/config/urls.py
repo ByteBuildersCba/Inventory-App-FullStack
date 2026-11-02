@@ -1,9 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from prestamos.views import MisPrestamosAPIView
 from usuarios.views_auth import LoginView, RegistroView, PerfilPruebaView
-from prestamos.views import MisPrestamosAPIView, AdminPrestamoListAPIView, AdminPrestamoDetailAPIView
+from prestamos.views import MisPrestamosAPIView, AdminPrestamoListAPIView, AdminPrestamoDetailAPIView , MiPrestamoDetailAPIView
 
 
 urlpatterns = [
@@ -37,6 +36,12 @@ urlpatterns = [
     MisPrestamosAPIView.as_view(),
     name="prestamos_list",
     ),
+    path(
+        "mis-prestamos/<int:pk>/",
+        MiPrestamoDetailAPIView.as_view(),
+        name="mi-prestamo-detail"
+    ),
+
     path(
         "api/v1/prestamos/admin/",
         AdminPrestamoListAPIView.as_view(),

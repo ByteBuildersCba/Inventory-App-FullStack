@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from .models import Prestamo
 from .serializers import PrestamoSerializer
+from rest_framework.permissions import IsAdminUser
 
 class MisPrestamosAPIView(APIView):
     authentication_classes = [TokenAuthentication]
@@ -36,9 +37,99 @@ class MisPrestamosAPIView(APIView):
         print("Errores de validación:", serializer.errors) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class AdminPrestamoListAPIView(APIView):
+
+
+
+class MiPrestamoDetailAPIView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self, request):
+        return Prestamo.objects.filter(
+            usuario_solicitante=request.user.email
+        )
+
+    # CONSULTAR UN PRÉSTAMO PROPIO
+    def get(self, request, pk):
+        try:
+            prestamo = self.get_queryset(request).get(pk=pk)
+        except Prestamo.DoesNotExist:
+            return Response(
+                {"error": "Préstamo no encontrado"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = PrestamoSerializer(prestamo)
+
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+        )
+
+    # MODIFICAR UNA SOLICITUD PENDIENTE
+    def put(self, request, pk):
+        try:
+            prestamo = self.get_queryset(request).get(pk=pk)
+        except Prestamo.DoesNotExist:
+            return Response(
+                {"error": "Préstamo no encontrado"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        if prestamo.estado != Prestamo.ESTADO_PENDIENTE:
+            return Response(
+                {"error": "Solo se pueden modificar préstamos pendientes"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        datos = {
+            'herramienta': request.data.get('herramienta'),
+            'fecha_retiro': request.data.get('retiro'),
+            'fecha_devolucion': request.data.get('devolucion'),
+        }
+
+        serializer = PrestamoSerializer(
+            prestamo,
+            data=datos
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_200_OK
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # ELIMINAR UNA SOLICITUD PENDIENTE
+    def delete(self, request, pk):
+        try:
+            prestamo = self.get_queryset(request).get(pk=pk)
+        except Prestamo.DoesNotExist:
+            return Response(
+                {"error": "Préstamo no encontrado"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        if prestamo.estado != Prestamo.ESTADO_PENDIENTE:
+            return Response(
+                {"error": "Solo se pueden eliminar solicitudes pendientes"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        prestamo.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
+        )
+
+class AdminPrestamoListAPIView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         prestamos = Prestamo.objects.all()
@@ -47,7 +138,7 @@ class AdminPrestamoListAPIView(APIView):
 
 class AdminPrestamoDetailAPIView(APIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
 
     def patch(self, request, pk):
         try:

@@ -9,21 +9,25 @@ import { Auth } from './auth';
 export class PrestamoService {
   private http = inject(HttpClient);
   private auth = inject(Auth);
-  // URL completa apuntando al servidor Django en puerto 8000
-  private apiUrl = 'http://127.0.0.1:8000/api/v1/prestamos/';
 
-  registrarSolicitud(solicitud: any) {
-  const token = this.auth.obtenerToken();
-  return this.http.post(this.apiUrl, solicitud, {
-    headers: { Authorization: `Token ${token}` }
-  });
+  private apiUrl = 'http://127.0.0.1:8000/api/v1/prestamos/';
+  private herramientasUrl = 'http://127.0.0.1:8000/api/v1/herramientas/';
+
+  registrarSolicitud(solicitud: any): Observable<any> {
+    const token = this.auth.obtenerToken();
+    return this.http.post(this.apiUrl, solicitud, {
+      headers: { Authorization: `Token ${token}` }
+    });
   }
 
   obtenerMisPrestamos(): Observable<any> {
-  const token = this.auth.obtenerToken();
+    const token = this.auth.obtenerToken();
+    return this.http.get(this.apiUrl, {
+      headers: { Authorization: `Token ${token}` }
+    });
+  }
 
-  return this.http.get(this.apiUrl, {
-    headers: { Authorization: `Token ${token}` }
-  });
-}
+  obtenerHerramientas(): Observable<any> {
+    return this.http.get(this.herramientasUrl);
+  }
 }

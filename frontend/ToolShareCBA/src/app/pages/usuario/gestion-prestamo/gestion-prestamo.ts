@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PrestamoService } from '../../../services/prestamo'; // O prestamo.service según tu archivo
+import { PrestamoService } from '../../../services/prestamo';
 
 @Component({
   selector: 'app-gestion-prestamo',
@@ -10,12 +10,15 @@ import { PrestamoService } from '../../../services/prestamo'; // O prestamo.serv
   styleUrl: './gestion-prestamo.css',
   templateUrl: './gestion-prestamo.html',
 })
-export class GestionPrestamo {
+export class GestionPrestamo implements OnInit {
   private formBuilder = inject(FormBuilder);
   private prestamoService = inject(PrestamoService);
+  private cd = inject(ChangeDetectorRef); // 👈 Forzar refresco de pantalla
 
-  // 👈 Variable que faltaba declarar:
   mostrarAlerta: boolean = false;
+  cargandoHerramientas: boolean = false;
+  herramientasDisponibles: any[] = [];
+  errorHerramientas: string = '';
 
   SolicitudForm = this.formBuilder.group({
     herramienta: ['', [Validators.required]],
@@ -23,25 +26,39 @@ export class GestionPrestamo {
     devolucion: ['', [Validators.required]],
   });
 
-  onSubmit() {
+  ngOnInit(): void {
+    this.cargarHerramientas();
+  }
+
+  cargarHerramientas(): void {
+    this.cargandoHerramientas = true;
+    
+    this.prestamoService.obtenerHerramientas().subscribe({
+      next: (respuesta: any) => {
+        const listado = Array.isArray(respuesta) ? respuesta : (respuesta.results || []);
+        this.herramientasDisponibles = listado;
+        this.cargandoHerramientas = false;
+        
+        this.cd.detectChanges(); // 👈 Obliga a Angular a actualizar la vista de inmediato
+      },
+      error: (err) => {
+        console.error('Error al cargar herramientas:', err);
+        this.cargandoHerramientas = false;
+        this.cd.detectChanges();
+      }
+    });
+  }
+
+  onSubmit(): void {
     if (this.SolicitudForm.valid) {
       this.prestamoService.registrarSolicitud(this.SolicitudForm.value).subscribe({
         next: (respuesta) => {
-          console.log('¡Préstamo registrado en MySQL!', respuesta);
-          
-          // Activa la alerta en pantalla
           this.mostrarAlerta = true;
           this.SolicitudForm.reset();
-
-          // Oculta la alerta luego de 3 segundos
-          setTimeout(() => {
-            this.mostrarAlerta = false;
-          }, 3000);
+          setTimeout(() => this.mostrarAlerta = false, 3000);
+          this.cd.detectChanges();
         },
-        error: (err) => {
-          console.error('Error al registrar el préstamo:', err);
-          alert('Hubo un error al conectar con el servidor.');
-        }
+        error: (err) => console.error(err)
       });
     } else {
       this.SolicitudForm.markAllAsTouched();

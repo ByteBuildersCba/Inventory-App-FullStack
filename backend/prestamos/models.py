@@ -30,6 +30,14 @@ class Prestamo(models.Model):
     
     usuario_solicitante = models.CharField(max_length=100)
 
+    def clean(self):
+        if self.fecha_retiro and self.fecha_devolucion:
+            if self.fecha_devolucion <= self.fecha_retiro:
+                raise ValidationError({
+                'fecha_devolucion': 'La fecha de devolución debe ser posterior a la fecha de retiro.'
+                })
+
+                
     def __str__(self):
         return f"{self.herramienta} - {self.estado}"
 
