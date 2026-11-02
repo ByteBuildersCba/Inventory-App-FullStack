@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from django.core.exceptions import ValidationError
 
 class Prestamo(models.Model):
     # Constantes de estado
@@ -31,3 +32,11 @@ class Prestamo(models.Model):
 
     def __str__(self):
         return f"{self.herramienta} - {self.estado}"
+
+    def clean(self):
+        super().clean()
+        if self.fecha_devolucion_esperada and self.fecha_prestamo:
+            if self.fecha_devolucion_esperada < self.fecha_prestamo:
+                raise ValidationError({
+                    'fecha_devolucion_esperada': 'La fecha de devolución esperada no puede ser anterior a la fecha de préstamo.'
+                })
