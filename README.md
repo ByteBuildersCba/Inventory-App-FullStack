@@ -209,6 +209,14 @@ Los archivos generados se almacenan en la carpeta `dist/`.
 
 ---
 
+##  Base de Datos
+
+Para importar la base de datos MySQL con sus tablas y datos iniciales:
+mysql -u root -p < database/Dump20261018.sql
+
+---
+
+
 ##  Integrantes
 
 * Jeremías Exequiel Ayala

@@ -61,12 +61,10 @@ class Herramienta(models.Model):
     def clean(self):
         super().clean()
 
-        errores = {}
-        if self.stock_disponible > self.stock_total:
-            errores['stock_disponible'] = ('El stock disponible no puede ser mayor que el stock total.')
-
-            if errores:
-                raise ValidationError(errores)
+        if (self.stock_total is not None and self.stock_disponible is not None and self.stock_disponible > self.stock_total):
+            raise ValidationError({'stock_disponible': 'El stock disponible no puede ser mayor que el stock total.'})
 
     def __str__(self):
         return f"{self.nombre}  ({self.codigo})"
+
+    
