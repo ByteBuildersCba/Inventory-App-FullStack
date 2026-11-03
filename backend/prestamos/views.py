@@ -129,7 +129,7 @@ class MiPrestamoDetailAPIView(APIView):
 
 class AdminPrestamoListAPIView(APIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         prestamos = Prestamo.objects.all()
@@ -138,7 +138,7 @@ class AdminPrestamoListAPIView(APIView):
 
 class AdminPrestamoDetailAPIView(APIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     def patch(self, request, pk):
         try:
